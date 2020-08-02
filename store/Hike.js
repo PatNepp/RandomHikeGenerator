@@ -1,4 +1,4 @@
 export default {
-  page: "Hike",
-  header: "Take a Hike!"
+  header: "Take a Hike!",
+  page: "Hike"
 };

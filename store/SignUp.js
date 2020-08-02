@@ -1,4 +1,4 @@
 export default {
-  page: "SignUp",
-  header: "Sign up!"
+  header: "Sign up!",
+  page: "SignUp"
 };

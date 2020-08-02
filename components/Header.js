@@ -2,7 +2,7 @@ export default st => `
 <header>
   <h1 class="title">${st.header}</h1>
   <form class="logInBox" action="">
-    <h2>Log In</h2>
+    <h2 class="logInName">Log In</h2>
       <div class="labels">
         <label for="email"><b>E-mail:</b></label>
         <input type="text" placeholder="E-mail" name="email" required>
@@ -14,10 +14,13 @@ export default st => `
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
         <br>
-        <button type="submit" class="submitbtn">Log In</button>
-        <button type="reset" class="clearbtn">Clear</button>
+        <div class="logInButtons">
+          <button type="submit" class="submitbtn">Log In</button>
+          <button type="reset" class="clearbtn">Clear</button>
+          <a class="signUp" href="./signUp.html">Sign Up!</a>
+        </div>
       </div>
-      <a href="./signUp.html">Sign Up Here</a>
+
   </form>
 </header>
 `;

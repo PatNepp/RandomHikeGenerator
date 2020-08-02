@@ -1,7 +1,7 @@
 import { Header, Main, Footer } from "./components";
 import * as state from "./store";
 
-function render(st = state.Home) {
+function render(st) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
   ${Main(st)}
@@ -9,7 +9,7 @@ function render(st = state.Home) {
   `;
   addHeaderEventListeners();
 }
-render();
+render(state.Home);
 
 function addHeaderEventListeners() {
   document.querySelector("#randomButton").forEach(link =>
