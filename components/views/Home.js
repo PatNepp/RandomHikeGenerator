@@ -1,6 +1,6 @@
 export default () => `
 <main class="jumbotron">
-  <div class="theButton">
+  <form class="theButton">
     <div class="location">
       <label for="zipOrCity">Location:</label>
       <input id="zipOrCity" type="text" name="zipOrCity" placeholder="Zip Code or City" required>
@@ -48,6 +48,6 @@ export default () => `
       </select>
     </div>
     <a id="randomButton" href="./hike.html">Find a Hike! <i class="fas fa-hiking"></i></a>
-  </div>
+  </form>
 </main>
 `;

@@ -1,6 +1,4 @@
-import Home from "../components/views/Home";
-
 export default {
-  header: "Random Hike Generator",
+  header: "Find A Hike",
   page: "Home"
 };
