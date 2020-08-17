@@ -1,4 +1,5 @@
 export default {
   header: "Hike",
-  page: "Hike"
+  page: "Hike",
+  trails: []
 };

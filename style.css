@@ -12,6 +12,7 @@ header {
   height: 10vh;
   border-bottom: 4px black ridge;
   background: rgb(47, 79, 57);
+  flex-wrap: wrap;
 }
 
 .RHG {
@@ -35,6 +36,20 @@ header {
   text-decoration: none;
   font-weight: bold;
   color: white;
+}
+
+#homeSignUp:hover {
+  border: 1px black dashed;
+  background: pink;
+  color: blue;
+  transition: all 2s ease;
+}
+
+#homeLogIn:hover {
+  border: 1px black dashed;
+  background: pink;
+  color: blue;
+  transition: all 2s ease;
 }
 
 .logInPage {
@@ -89,8 +104,8 @@ header {
   color: black;
 }
 
-main.jumbotron {
-  background-image: url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg);
+.jumbotron {
+  /*background: url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg);*/
   background-size: cover;
   height: 100vh;
 }
@@ -100,47 +115,67 @@ main.jumbotron {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
   height: 100vh;
   width: cover;
 }
 
-.location {
-  background: rgb(47, 79, 57);
-  height: max-content;
-  padding: 10px;
-  border-radius: 5px;
+.locationFilters {
+  background: rgba(47, 79, 57, 0.712);
+  padding: 20px;
+  padding-top: 0px;
+  border-radius: 20px;
   border: 5px black solid;
+  text-align: center;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
-.filters {
-  background: rgb(47, 79, 57);
-  height: max-content;
-  padding: 10px;
-  border-radius: 5px;
-  border: 5px black solid;
+.locationFilters > p.giveLocation {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: span 2;
 }
 
-.hotDog {
-  padding-left: 15px;
+.locationFilters > p.optional {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: span 2;
+}
+
+.locationFilters > div > label {
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: -1px 1px 5px #fff;
 }
 
 #randomButton {
   background: rgb(122, 151, 84);
-  border-radius: 5px;
   text-decoration: none;
   font-size: 70px;
-  padding: 25px 35px 25px 35px;
-  border: 4px black ridge;
-  border-radius: 10px;
+  padding: 35px;
+  border: 5px black ridge;
+  border-radius: 20px;
   font-style: oblique;
   font-weight: bold;
   color: black;
-  opacity: 90%;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px rgba(46, 46, 46, 0.575);
 }
 
 #randomButton:hover {
-  box-shadow: 2px 2px black;
-  opacity: 100%;
+  background-color: rgba(97, 117, 70, 0.856);
+  transition: all 0.3s ease;
+}
+
+#randomButton:active {
+  background-color: rgb(96, 116, 70);
+  box-shadow: 0 3px rgba(70, 70, 70, 0.575);
+  transform: translateY(4px);
 }
 
 footer {
@@ -149,4 +184,179 @@ footer {
   align-items: center;
   background-color: darkslategrey;
   text-align: center;
+  border-top: 3px black solid;
+}
+
+#contactFormLink {
+  color: black;
+}
+
+
+@media (max-width: 800px) {
+  .RHG {
+    font-size: 32px;
+    padding: 3px;
+    margin-left: 7px;
+  }
+  .signLogIn {
+    margin-right: 10px;
+  }
+  .signLogIn > a {
+    font-size: 17px;
+    padding: 16px;
+  }
+  .locationFilters {
+    background: rgba(47, 79, 57, 0.712);
+    padding: 15px;
+    padding-top: 0px;
+    border: 4px black solid;
+  }
+  .locationFilters > div > label {
+    font-size: 20px;
+  }
+  #randomButton {
+    background: rgb(122, 151, 84);
+    font-size: 65px;
+    padding: 35px;
+    border: 4px black ridge;
+  }
+}
+
+@media (max-width: 690px) {
+  .RHG {
+    font-size: 27px;
+    padding: 3px;
+    margin-left: 5px;
+  }
+  .signLogIn {
+    margin-right: 6px;
+  }
+  .signLogIn > a {
+    font-size: 17px;
+    padding: 13px;
+  }
+  .locationFilters {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    padding-top: 0px;
+  }
+  .locationFilters > div {
+    padding: 8px;
+  }
+  .locationFilters > div > label {
+    font-size: 30px;
+  }
+  #randomButton {
+    font-size: 57px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 630px) {
+  .RHG {
+    font-size: 27px;
+    padding: 3px;
+    margin-left: 5px;
+  }
+  .signLogIn {
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .signLogIn > a {
+    font-size: 15px;
+    padding: 7px;
+  }
+  .locationFilters {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .locationFilters > label {
+    font-size: 20px;
+  }
+  .locationFilters > select {
+    width: max-content;
+  }
+  #randomButton {
+    font-size: 57px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 520px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    border-bottom: none;
+    background: rgb(47, 79, 57);
+  }
+
+  .RHG {
+    font-size: 26px;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .signLogIn {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .signLogIn > a {
+    font-size: 18px;
+    font-weight: normal;
+    padding: 2px 10px;
+    text-decoration: none;
+    color: white;
+  }
+
+  .jumbotron {
+    background-image: none;
+  }
+
+  .theButton {
+    background-color: rgb(0, 24, 0);
+    justify-items: flex-start;
+  }
+  .locationFilters {
+    background: rgb(47, 79, 57);
+    border-radius: 20px;
+    border: 5px black solid;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /*display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    align-items: center;*/
+  }
+
+  .locationFilters > div > label {
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: -1px 1px 5px #fff;
+  }
+
+  #randomButton {
+    font-size: 50px;
+    padding: 15px;
+    border: 3px black ridge;
+  }
+  #randomButton:hover {
+    background-color: rgba(97, 117, 70, 0.856);
+  }
+
+  #randomButton:active {
+    background-color: rgb(96, 116, 70);
+    box-shadow: 0 3px rgba(70, 70, 70, 0.575);
+    transform: translateY(4px);
+  }
 }

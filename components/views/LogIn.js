@@ -21,7 +21,7 @@ export default () => `
       </div>
     </form>
     <hr>
-    <p>Don't have an account?</p><br><a class="signUp" href="./signUp.html">Sign Up!</a>
+    <p>Don't have an account?</p><br><a data-navigo class="signUp" href="./Signup">Sign Up!</a>
   </div>
 </main>
 `;

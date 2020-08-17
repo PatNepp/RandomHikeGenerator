@@ -1,7 +1,7 @@
 export default () => `
 <main class="jumbotron">
   <form class="signUpBox" action="">
-    <h2 class="signUpName">Log In</h2>
+    <h2 class="signUpName">Sign Up</h2>
     <div class="labels">
       <label for="email"><b>E-mail:</b></label>
       <input type="email" placeholder="E-mail" name="email" required>
@@ -18,6 +18,6 @@ export default () => `
       </div>
     </div>
   </form>
-  <p>Already have an account?</p><br><a class="signUp" href="./logIn.html">Log In!</a>
+  <p>Already have an account?</p><br><a data-navigo class="logIn" href="./Login">Log In!</a>
 </main>
 `;

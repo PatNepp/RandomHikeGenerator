@@ -1,53 +1,45 @@
 export default () => `
 <main class="jumbotron">
-  <form class="theButton">
-    <div class="location">
-      <label for="zipOrCity">Location:</label>
-      <input id="zipOrCity" type="text" name="zipOrCity" placeholder="Zip Code or City" required>
-
-      <label class="hotDog" for="distanceFrom">Radius:</label>
-      <select name="radius">
-        <option value="5 miles">5 miles</option>
-        <option value="10 miles">10 miles</option>
-        <option value="25 miles">25 miles</option>
-        <option value="50 miles">50 miles</option>
-        <option value="100 miles">100 miles</option>
-      </select>
+  <form class="theButton" action"">
+    <div class="locationFilters">
+      <p class="giveLocation">Give us your location and we'll find a random hike for you!</p>
+      <div id="citySearch">
+        <label for="zipOrCity">Location:</label>
+        <input id="zipOrCity" type="text" name="zipOrCity" placeholder="Zip Code or City" required>
+      </div>
+      <div id="locationRadius">
+        <label class="hotDog" for="distanceFrom">Radius:</label>
+        <select name="radius">
+          <option value="5Miles">5 miles</option>
+          <option value="10Miles">10 miles</option>
+          <option value="25Miles">25 miles</option>
+          <option value="50Miles">50 miles</option>
+          <option value="100Miles">100 miles</option>
+          <option value="200Miles">200 miles</option>
+        </select>
+      </div>
+      <p class="optional">----optional----</p>
+      <div id="hikeLength">
+        <label for="length">Length:</label>
+        <select id="length" name="length">
+          <option value="All">Choose a hike length</option>
+          <option value="short">0-5 miles</option>
+          <option value="medium">5-10 miles</option>
+          <option value="long">10-20 miles</option>
+          <option value="veryLong">20+ miles</option>
+        </select>
+      </div>
+      <div id="hikeDiff">
+        <label class="hotDog" for="difficulty">Difficulty:</label>
+        <select name="difficulty">
+          <option value="chooseDiff">Choose a Difficulty level</option>
+          <option value="easy">Easy</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="difficult">Difficult</option>
+        </select>
+      </div>
     </div>
-    <div class="filters">
-      <label for="length">Length:</label>
-      <select id="length" name="length">
-        <option value="1 mile">1 mile or less</option>
-        <option value="2 mile">2 miles</option>
-        <option value="3 mile">3 miles</option>
-        <option value="4 mile">4 miles</option>
-        <option value="Over 5">5 miles or more</option>
-      </select>
-
-      <label class="hotDog" for="estTime">Est. Time:</label>
-      <select name="estTime">
-        <option value="0">1 hour or less</option>
-        <option value="1-2hrs">1 to 2 hours</option>
-        <option value="2-3hrs">2 to 3 hours</option>
-        <option value="3+">3+ hours</option>
-      </select>
-
-      <label class="hotDog" for="difficulty">Difficulty:</label>
-      <select name="difficulty">
-        <option value="easy">Easy</option>
-        <option value="moderate">Moderate</option>
-        <option value="Hard">Hard</option>
-        <option value="xtreme">Extreme</option>
-      </select>
-
-      <label class="hotDog" for="routeType">Route Type:</label>
-      <select name="routeType">
-        <option value="loop">Loop</option>
-        <option value="outBack">Out & Back</option>
-        <option value="point">Point to Point</option>
-      </select>
-    </div>
-    <a id="randomButton" href="./hike.html">Find a Hike! <i class="fas fa-hiking"></i></a>
+    <a id="randomButton" href="./Hike" data-navigo>Find a Hike! <i class="fas fa-hiking"></i></a>
   </form>
 </main>
 `;
