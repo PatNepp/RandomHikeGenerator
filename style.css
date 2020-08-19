@@ -10,8 +10,8 @@ header {
   justify-content: flex-start;
   align-items: center;
   height: 10vh;
-  border-bottom: 4px black ridge;
-  background: rgb(47, 79, 57);
+  border-bottom: 6px #bcd1f0 double;
+  background: #0d1c18;
   flex-wrap: wrap;
 }
 
@@ -20,7 +20,7 @@ header {
   font-style: italic;
   font-size: 35px;
   font-weight: bold;
-  color: white;
+  color: #f0f4fa;
   padding: 5px;
   margin-left: 10px;
   text-decoration: none;
@@ -35,21 +35,13 @@ header {
   padding: 20px;
   text-decoration: none;
   font-weight: bold;
-  color: white;
+  color: #f0f4fa;
+  transition: all .4s ease;
 }
 
-#homeSignUp:hover {
-  border: 1px black dashed;
-  background: pink;
-  color: blue;
-  transition: all 2s ease;
-}
-
-#homeLogIn:hover {
-  border: 1px black dashed;
-  background: pink;
-  color: blue;
-  transition: all 2s ease;
+#homeLogIn:hover, #homeSignUp:hover {
+  color: #c8b0a7;
+  text-shadow: .5px 3px 5px #2e3c2d;
 }
 
 .logInPage {
@@ -105,7 +97,6 @@ header {
 }
 
 .jumbotron {
-  /*background: url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg);*/
   background-size: cover;
   height: 100vh;
 }
@@ -121,11 +112,11 @@ header {
 }
 
 .locationFilters {
-  background: rgba(47, 79, 57, 0.712);
+  background: #bcd1f075;
   padding: 20px;
   padding-top: 0px;
   border-radius: 20px;
-  border: 5px black solid;
+  border: 6px #0d1c18 double;
   text-align: center;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
@@ -149,27 +140,33 @@ header {
 .locationFilters > div > label {
   font-size: 30px;
   font-weight: bold;
-  text-shadow: -1px 1px 5px #fff;
+  text-shadow: -2px 1px 8px #f0f4fa;
 }
 
 #randomButton {
-  background: rgb(122, 151, 84);
+  background: #bcd1f075;
   text-decoration: none;
-  font-size: 70px;
-  padding: 35px;
-  border: 5px black ridge;
+  font-size: 55px;
+  padding: 25px;
+  border: 6px #0d1c18 double;
   border-radius: 20px;
   font-style: oblique;
   font-weight: bold;
   color: black;
+  text-shadow: -2px 1px 8px #f0f4fa;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 6px rgba(46, 46, 46, 0.575);
+  transition: all 0.4s ease;
 }
 
 #randomButton:hover {
-  background-color: rgba(97, 117, 70, 0.856);
-  transition: all 0.3s ease;
+  background-color: #0d1c18;
+  box-shadow: 0px 3px #0d1c18c2;
+  font-size: 60px;
+  padding: 30px;
+  color: #bcd1f0;
+  border: 6px #bcd1f0 double;
+  text-shadow: none;
 }
 
 #randomButton:active {
@@ -182,7 +179,7 @@ footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  background-color: darkslategrey;
+  background-color: #0d1c18;
   text-align: center;
   border-top: 3px black solid;
 }

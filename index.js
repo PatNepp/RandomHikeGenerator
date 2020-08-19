@@ -76,7 +76,8 @@ function randomJumbo(st) {
       "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
       "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
       "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
-      "url(https://www.publicdomainpictures.net/pictures/210000/velka/bryce-canyon-panoramic-view.jpg)"
+      "url(https://www.publicdomainpictures.net/pictures/210000/velka/bryce-canyon-panoramic-view.jpg)",
+      "url(https://lh3.googleusercontent.com/GuEnf1mbOwlhWWKXXzyeWCOzxIww6HaHPlx8vUiJdSuCVar8Q9z3xG-hc463dXp8Wjq1SO7K6H3zu7hjJGjQ7soY-6LEJJClFd4tHCBTNackeyAKP3ogwReTidxXw1LUNqfP58qIpQ0=w2400)"
     ];
     let randomPic = Math.floor(Math.random() * jumboPics.length);
     document.querySelector(".jumbotron").style.background =
