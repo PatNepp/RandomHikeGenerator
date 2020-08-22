@@ -3,9 +3,10 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
+import { auth, db } from "./firebase";
 
+//ROUTER//
 const router = new Navigo(window.location.origin);
-
 router
   .on({
     "/": () => render(state.Home),
@@ -13,7 +14,6 @@ router
       let page = capitalize(params.page);
       render(state[page]);
     }
-    //if(capitalize(route) === "Signup")
   })
   .resolve();
 
@@ -47,12 +47,14 @@ router
 //   .then(result => console.log(result))
 //   .catch(error => console.log("error", error));
 
+//RENDER FUNCTION//
 function render(st) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
   ${Main(st)}
   ${Footer(st)}
   `;
+  hideHeaderElements(st);
   randomJumbo(st);
   router.updatePageLinks();
 }
@@ -61,27 +63,39 @@ function render(st) {
 //   return Math.floor(Math.random() * api.length + 0);
 // }
 
-//Random Jumbotron photo function
+//RANDOM JUMBOTRON//
 function randomJumbo(st) {
-  if (st.page !== "Hike") {
-    const jumboPics = [
-      "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/506d19ca32ba58505b43753deb4f95e0/panorama-landscape.jpg)",
-      "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg)",
-      "url(https://images.unsplash.com/photo-1505521216430-8b73b2067df0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1507&q=80)",
-      "url(https://images.unsplash.com/photo-1595821927361-4238421d7baa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1503&q=80)",
-      "url(https://images.unsplash.com/photo-1576225106612-ea30b5bb16b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1464&q=80)",
-      "url(https://images.unsplash.com/photo-1596245830906-ce7644a63ecb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1424&q=80)",
-      "url(https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1438&q=80)",
-      "url(https://images.unsplash.com/photo-1591806336026-f825d72071a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80)",
-      "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
-      "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
-      "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
-      "url(https://www.publicdomainpictures.net/pictures/210000/velka/bryce-canyon-panoramic-view.jpg)",
-      "url(https://lh3.googleusercontent.com/GuEnf1mbOwlhWWKXXzyeWCOzxIww6HaHPlx8vUiJdSuCVar8Q9z3xG-hc463dXp8Wjq1SO7K6H3zu7hjJGjQ7soY-6LEJJClFd4tHCBTNackeyAKP3ogwReTidxXw1LUNqfP58qIpQ0=w2400)"
-    ];
-    let randomPic = Math.floor(Math.random() * jumboPics.length);
-    document.querySelector(".jumbotron").style.background =
-      jumboPics[randomPic];
+  const jumboPics = [
+    "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/506d19ca32ba58505b43753deb4f95e0/panorama-landscape.jpg)",
+    "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg)",
+    "url(https://images.unsplash.com/photo-1505521216430-8b73b2067df0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1507&q=80)",
+    "url(https://images.unsplash.com/photo-1595821927361-4238421d7baa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1503&q=80)",
+    "url(https://images.unsplash.com/photo-1576225106612-ea30b5bb16b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1464&q=80)",
+    "url(https://images.unsplash.com/photo-1596245830906-ce7644a63ecb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1424&q=80)",
+    "url(https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1438&q=80)",
+    "url(https://images.unsplash.com/photo-1591806336026-f825d72071a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80)",
+    "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
+    "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
+    "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
+    "url(https://www.publicdomainpictures.net/pictures/210000/velka/bryce-canyon-panoramic-view.jpg)",
+    "url(https://lh3.googleusercontent.com/GuEnf1mbOwlhWWKXXzyeWCOzxIww6HaHPlx8vUiJdSuCVar8Q9z3xG-hc463dXp8Wjq1SO7K6H3zu7hjJGjQ7soY-6LEJJClFd4tHCBTNackeyAKP3ogwReTidxXw1LUNqfP58qIpQ0=w2400)"
+  ];
+  let randomPic = Math.floor(Math.random() * jumboPics.length);
+  document.querySelector(".jumbotron").style.background = jumboPics[randomPic];
+  if (st.page !== "Profile") {
     return jumboPics[randomPic];
+  }
+}
+
+//HIDE HEADER ELEMENTS//
+function hideHeaderElements(st) {
+  if (st.page === "Login") {
+    document.querySelector("#homeLogIn").style.display = "none";
+  }
+  if (st.page === "Signup") {
+    document.querySelector("#homeSignUp").style.display = "none";
+  }
+  if (st.page === "Profile") {
+    document.querySelector(".signLogIn").style.display = "none";
   }
 }

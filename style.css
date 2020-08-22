@@ -4,6 +4,7 @@ body {
   font-family: 'Exo 2', sans-serif;
 }
 
+/* The Header */
 header {
   display: flex;
   flex-direction: row;
@@ -44,31 +45,37 @@ header {
   text-shadow: .5px 3px 5px #2e3c2d;
 }
 
+.jumbotron {
+  background-size: cover;
+  height: 100vh;
+}
+
+/* Log In Page */
 .logInPage {
-  border: 4px black solid;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-content: center;
-  width: fit-content;
-  height: fit-content;
-  background: white;
+  justify-content: center;
+  height: 100vh;
+  width: cover;
+  align-items: center;
 }
 
 .logInBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 10px;
-  flex-grow: 1;
-  height: 25vh;
-  width: 40vh;
-  /*border: 4px white ridge;*/
+  font-size: 20px;
+  width: 80vh;
+  background: #bcd1f075;
+  border: 6px #0d1c18 double;
+  border-radius: 20px;
+  padding: 20px;
+  text-shadow: -2px 1px 8px #f0f4fa;
 }
 
 .logInName {
-  font-size: 20px;
-  margin-bottom: 0px;
+  font-size: 35px;
+  margin-bottom: 20px;
   text-align: center;
   margin-top: 2px;
 }
@@ -81,24 +88,42 @@ header {
   padding-left: 15px;
 }
 
-.signUp {
-  margin-left: 50px;
-  background: #dbb782;
+button {
   border-radius: 5px;
-  text-decoration: none;
-  font-size: 14px;
-  padding: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  border: 2px black ridge;
-  border-radius: 5px;
-  font-weight: bold;
-  color: black;
+  background-color: #bcd1f0;
+  font-style: oblique;
+  padding: 3px 8px;
 }
 
-.jumbotron {
-  background-size: cover;
-  height: 100vh;
+.noAccount {
+  border-top: 6px #bcd1f075 ridge;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp {
+  text-decoration: none;
+  text-shadow: none;
+  background: #bcd1f0;
+  font-size: 20px;
+  padding: 10px;
+  border: 3px #c8b0a7 double;
+  border-radius: 10px;
+  font-style: oblique;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  width: fit-content;
+}
+
+.signUp:hover {
+  background: #0d1c18;
+  color: #f0f4fa;
+  box-shadow: -2px 3px #c8b0a7;
 }
 
 .theButton {

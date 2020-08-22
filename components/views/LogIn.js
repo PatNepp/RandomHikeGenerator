@@ -19,9 +19,12 @@ export default () => `
           <button type="reset" class="clearbtn">Clear</button>
         </div>
       </div>
+      <br>
+      <div class="noAccount">
+        <p>Don't have an account?</p>
+        <a data-navigo class="signUp" href="./Signup">Sign Up!</a>
+      </div>
     </form>
-    <hr>
-    <p>Don't have an account?</p><br><a data-navigo class="signUp" href="./Signup">Sign Up!</a>
   </div>
 </main>
 `;
