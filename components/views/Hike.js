@@ -1,5 +1,5 @@
 export default st => `
-<main>
+<main class="jumbotron">
 <section id="trail">
 ${st.trails
   .map(post => {

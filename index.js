@@ -66,8 +66,6 @@ function render(st) {
 //RANDOM JUMBOTRON//
 function randomJumbo(st) {
   const jumboPics = [
-    "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/506d19ca32ba58505b43753deb4f95e0/panorama-landscape.jpg)",
-    "url(https://trello-attachments.s3.amazonaws.com/5efd1a3473fb9b8783f4fec1/5efe7f2929a10940bedd61d1/886806d30ed4ade9fed4e897cae30cc6/kolob-canyons-zion-national-park-utah.jpg)",
     "url(https://images.unsplash.com/photo-1505521216430-8b73b2067df0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1507&q=80)",
     "url(https://images.unsplash.com/photo-1595821927361-4238421d7baa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1503&q=80)",
     "url(https://images.unsplash.com/photo-1576225106612-ea30b5bb16b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1464&q=80)",
