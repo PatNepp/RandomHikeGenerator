@@ -1,4 +1,4 @@
 export default {
-  header: "Log In",
+  header: "Login",
   page: "Login"
 };
