@@ -17,35 +17,22 @@ router
   })
   .resolve();
 
-// let requestOptions = {
-//   method: "GET",
-//   redirect: "follow"
-// };
+axios
+  .get(
+    "https://www.hikingproject.com/data/get-trails?lat=30.6270&lon=-90.1994&maxDistace=${maxDistance}&minLength=${minLength}&key=200863333-3ebda2f4593009e377ad78efc1fc91be"
+  )
+  .then(response => {
+    response.data.trails.forEach(trail => {
+      state.Hike.trails.push(trail);
+    });
+  })
+  .catch(err => console.log(err));
 
-// fetch(
-//   "https://www.hikingproject.com/data/get-trails?lat=38.6270&lon=-90.9114&maxDistance=200&maxResults=500&key=200863333-3ebda2f4593009e377ad78efc1fc91be",
-//   requestOptions
-// )
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log("error", error));
-
-// let myHeaders = new Headers();
-// myHeaders.append("Cookie", "JSESSIONID=6CAAA69599102BB125A0FF2AEC392063");
-
-// let requestOptions = {
-//   method: "GET",
-//   headers: myHeaders,
-//   redirect: "follow"
-// };
-
-// fetch(
-//   "http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=StLouis,MO",
-//   requestOptions
-// )
-//   .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log("error", error));
+// axios
+//   .get(
+//     "http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=StLouis,MO"
+//   )
+//   .then(response => console.log(response.data));
 
 //RENDER FUNCTION//
 function render(st) {

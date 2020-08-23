@@ -152,7 +152,7 @@ button {
   border: 6px #0d1c18 double;
   text-align: center;
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
@@ -165,9 +165,34 @@ button {
 }
 
 .locationFilters > p.optional {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: span 2;
+}
+
+#citySearch {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: span 1;
+}
+
+#maxDistance {
   grid-row-start: 3;
   grid-row-end: 4;
   grid-column-start: span 2;
+}
+
+#hikeLength {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: span 1;
+}
+
+#hikeDiff {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .locationFilters > div > label {
