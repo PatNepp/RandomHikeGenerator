@@ -78,11 +78,13 @@ function randomJumbo(st) {
     // "url(https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1438&q=80)"
     // "url(https://images.unsplash.com/photo-1591806336026-f825d72071a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80)"
     // "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)"
-    // "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)"
-    // "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)"
-    "url(https://lh3.googleusercontent.com/GuEnf1mbOwlhWWKXXzyeWCOzxIww6HaHPlx8vUiJdSuCVar8Q9z3xG-hc463dXp8Wjq1SO7K6H3zu7hjJGjQ7soY-6LEJJClFd4tHCBTNackeyAKP3ogwReTidxXw1LUNqfP58qIpQ0=w2400)",
-    "url(https://lh3.googleusercontent.com/uI_uyLFyYVl4pHT9VuQ7P76ctcQ_7S70ObtgU7UWm60r_W1vClk0ztbDZHq73GnuAas0jn-UQQgyAF7PJiUq9gKHX2LGB6bl9yEc6ABSwuqsHgLLjmV07LszO0TMuPiC-NslU5F_QRk=w2400)",
-    "url(https://lh3.googleusercontent.com/7poWOWRWr3MLA7o1GFzhtcs-B05jxPdXni3v2xBPM4jQSHV9ZnemVl-hSOdgFZ9JHUi7ANCnjj0GOZwjH_ybbSlJ9RENfp6izg_3UUhBdyimEivhQqcrwQ-mFEhOsVjqezb8jRqXrGc=w2400)"
+    // "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
+    // "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
+    // "url(https://lh3.googleusercontent.com/aQDmYfKXZ6lqwa9IuyCi4SljsPLhKQWBYoqxR81LCNneP-XjRY47jCYHgDAlN73h-mEzpJKvvTxehnfEwInUeYqNel_c5VEkTP55HblbE9XhWC-BotoyNmybwdrQK0fgobI5IN0bwwA=w2400)",
+    // "url(https://lh3.googleusercontent.com/lOVMjbuSkxwoaEOsnUbtrHTEHxsnoldd82XRNHUWVx9gct32QcOnlJOdNrIJ91YwFSljcrwC4X8_UU43hWNvo3Id5q9wNBBpcvRyI-70eTY3IF0tRxQTJ4OzWG8ohRHuP9UTXhmilTk=w2400)",
+    // "url(https://lh3.googleusercontent.com/tHWrf5KRBo-FJF-TjfoXE0nF2U-rYfmwImu3l_ChzogjuryusPjgcs5zdtJT9ENFZTHz8wmZP4lc_CfR7WdpLAfGNVqtFziF8uiXyF0zblkj30pxxC3iqkd552PotLwfIrL1W9Fs8AI=w2400)",
+    "url(https://lh3.googleusercontent.com/p7ctDRVWPWsm3yS6m3R40yAOJu5V413JAl5smP_Maw-HqHFraT_BN8Lj8MH4YcIYqwizqoxrLoRNm8DEpajv8G1uaQqG8n57_tWxcs8g9MvRHZFEG7YQguqcZ2fwwAcYyk2VABlvLSk=w2400)",
+    "url()"
   ];
   let randomPic = Math.floor(Math.random() * jumboPics.length);
   document.querySelector(".jumbotron").style.background = jumboPics[randomPic];
