@@ -19,12 +19,13 @@ router
 
 axios
   .get(
-    "https://www.hikingproject.com/data/get-trails?lat=30.6270&lon=-90.1994&maxDistace=${maxDistance}&minLength=${minLength}&key=200863333-3ebda2f4593009e377ad78efc1fc91be"
+    "https://www.hikingproject.com/data/get-trails?lat=30.6270&lon=-90.1994&maxDistace=25&minLength=5$maxResults=2&key=200863333-3ebda2f4593009e377ad78efc1fc91be"
   )
   .then(response => {
     response.data.trails.forEach(trail => {
       state.Hike.trails.push(trail);
     });
+    console.log(response);
   })
   .catch(err => console.log(err));
 

@@ -24,7 +24,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "firebase": "^7.19.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "navigo": "^7.1.2",
     "parcel-bundler": "^1.12.4"
   }
