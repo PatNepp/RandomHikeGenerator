@@ -1,6 +1,6 @@
 export default () => `
 <main class="jumbotron">
-  <form class="theButton" method="POST">
+  <form class="theButton" action="./Hike" method="POST">
     <div class="locationFilters">
       <p class="giveLocation">Give us your location and we'll find a random hike for you!</p>
       <div id="citySearch">
@@ -64,7 +64,7 @@ export default () => `
         </select>
       </div>
       <div id="maxDistance">
-        <label class="hotDog" for="distanceFrom">Radius:</label>
+        <label for="distanceFrom">Radius:</label>
         <select name="radius">
           <option value="5Miles">5 miles</option>
           <option value="10Miles">10 miles</option>
@@ -74,7 +74,7 @@ export default () => `
           <option value="200Miles">200 miles</option>
         </select>
       </div>
-      <p class="optional">----optional----</p>
+      <p class="optional">------optional------</p>
       <div id="hikeLength">
         <label for="length">Length:</label>
         <select id="length" name="length">
@@ -101,3 +101,45 @@ export default () => `
 `;
 
 const randomButton = document.querySelector("#randomButton");
+
+// function sendData( data ) {
+//   console.log( 'Sending data' );
+
+//   const XHR = new XMLHttpRequest();
+
+//   let urlEncodedData = "",
+//       urlEncodedDataPairs = [],
+//       name;
+
+//   // Turn the data object into an array of URL-encoded key/value pairs.
+//   for( name in data ) {
+//     urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
+//   }
+
+//   // Combine the pairs into a single string and replace all %-encoded spaces to
+//   // the '+' character; matches the behaviour of browser form submissions.
+//   urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
+
+//   // Define what happens on successful data submission
+//   XHR.addEventListener( 'load', function(event) {
+//     alert( 'Yeah! Data sent and response loaded.' );
+//   } );
+
+//   // Define what happens in case of error
+//   XHR.addEventListener( 'error', function(event) {
+//     alert( 'Oops! Something went wrong.' );
+//   } );
+
+//   // Set up our request
+//   XHR.open( 'POST', 'https://example.com/cors.php' );
+
+//   // Add the required HTTP header for form data POST requests
+//   XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+
+//   // Finally, send our data.
+//   XHR.send( urlEncodedData );
+// }
+
+// randomButton.addEventListener( 'click', function() {
+//   sendData( {test:'ok'} );
+// } )

@@ -3,15 +3,15 @@ export default st => `
 <section id="trail">
 ${st.trails
   .map(trail => {
-    formatHikeTrail(trail);
+    randomHikeInfo(trail);
   })
-  .join()}
+  .join("")}
 </section>
 </main>`;
 
-function formatHikeTrail(trail) {
+function randomHikeInfo(trail) {
   return `
-    <div class="trail-post">
+    <div class="trailPost">
       <h4>${trail.name}</h4>
       <img src="${trail.imgMedium}">
       <p>${trail.location}</p>
