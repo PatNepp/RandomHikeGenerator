@@ -261,20 +261,19 @@ footer {
     padding: 16px;
   }
   .locationFilters {
-    background: rgba(47, 79, 57, 0.712);
     padding: 15px;
     padding-top: 0px;
-    border: 4px black solid;
   }
   .locationFilters > div > label {
     font-size: 20px;
   }
   #randomButton {
-    background: rgb(122, 151, 84);
-    font-size: 65px;
-    padding: 35px;
-    border: 4px black ridge;
+    font-size: 50px;
+    padding: 20px;
   }
+  #randomButton:hover {
+    font-size: 60px;
+    padding: 25px;
 }
 
 @media (max-width: 690px) {
@@ -290,6 +289,14 @@ footer {
     font-size: 17px;
     padding: 13px;
   }
+  .logInBox {
+    width: 70vh;
+    padding: 15px;
+  }
+  .logInName {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
   .locationFilters {
     display: flex;
     flex-direction: column;
@@ -300,11 +307,15 @@ footer {
     padding: 8px;
   }
   .locationFilters > div > label {
-    font-size: 30px;
+    font-size: 25px;
   }
   #randomButton {
-    font-size: 57px;
-    padding: 30px;
+    font-size: 45px;
+    padding: 20px;
+  }
+  #randomButton:hover {
+    font-size: 55px;
+    padding: 25px;
   }
 }
 
@@ -324,6 +335,9 @@ footer {
     font-size: 15px;
     padding: 7px;
   }
+  .logInBox {
+    width: 60vh;
+  }
   .locationFilters {
     padding: 12px;
     display: flex;
@@ -337,8 +351,8 @@ footer {
     width: max-content;
   }
   #randomButton {
-    font-size: 57px;
-    padding: 30px;
+    font-size: 45px;
+    padding: 20px;
   }
 }
 
@@ -349,8 +363,6 @@ footer {
     justify-content: center;
     align-items: center;
     height: 10vh;
-    border-bottom: none;
-    background: rgb(47, 79, 57);
   }
 
   .RHG {
@@ -365,25 +377,23 @@ footer {
   }
 
   .signLogIn > a {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: normal;
     padding: 2px 10px;
     text-decoration: none;
-    color: white;
   }
-
+  .logInBox {
+    width: 50vh
+  }
   .jumbotron {
     background-image: none;
   }
-
   .theButton {
     background-color: rgb(0, 24, 0);
     justify-items: flex-start;
   }
   .locationFilters {
-    background: rgb(47, 79, 57);
     border-radius: 20px;
-    border: 5px black solid;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -395,23 +405,13 @@ footer {
   }
 
   .locationFilters > div > label {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     text-shadow: -1px 1px 5px #fff;
   }
 
   #randomButton {
-    font-size: 50px;
+    font-size: 45px;
     padding: 15px;
     border: 3px black ridge;
   }
-  #randomButton:hover {
-    background-color: rgba(97, 117, 70, 0.856);
-  }
-
-  #randomButton:active {
-    background-color: rgb(96, 116, 70);
-    box-shadow: 0 3px rgba(70, 70, 70, 0.575);
-    transform: translateY(4px);
-  }
-}

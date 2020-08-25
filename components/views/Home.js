@@ -8,8 +8,8 @@ export default () => `
         <input id="city" type="text" name="city" placeholder="City" required>
       </div>
       <div id="stateSearch">
-        <label for"state">State:</label>
-        <select placeholder="State" name="state" id="state" required>
+        <label for"states">State:</label>
+        <select placeholder="State" name="states" id="states" required>
           <option value="AL">Alabama</option>
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
@@ -64,7 +64,7 @@ export default () => `
         </select>
       </div>
       <div id="maxDistance">
-        <label for="distanceFrom">Radius:</label>
+        <label for="radius">Radius:</label>
         <select name="radius">
           <option value="5Miles">5 miles</option>
           <option value="10Miles">10 miles</option>
@@ -78,68 +78,263 @@ export default () => `
       <div id="hikeLength">
         <label for="length">Length:</label>
         <select id="length" name="length">
-          <option value="All">Choose a hike length</option>
-          <option value="short">0-5 miles</option>
-          <option value="medium">5-10 miles</option>
-          <option value="long">10-20 miles</option>
-          <option value="veryLong">20+ miles</option>
+          <option value="All">Minimum Hike Length</option>
+          <option value="short">5 miles</option>
+          <option value="medium">10 miles</option>
+          <option value="long">15 miles</option>
+          <option value="veryLong">20 miles</option>
         </select>
       </div>
       <div id="hikeDiff">
-        <label class="hotDog" for="difficulty">Difficulty:</label>
+        <label for="difficulty">Difficulty:</label>
         <select name="difficulty">
-          <option value="chooseDiff">Choose a Difficulty level</option>
+          <option value="chooseDiff">Hike Difficulty Level</option>
           <option value="easy">Easy</option>
           <option value="intermediate">Intermediate</option>
           <option value="difficult">Difficult</option>
         </select>
       </div>
     </div>
-    <a id="randomButton" href="./Hike" data-navigo>Find a Hike! <i class="fas fa-hiking"></i></a>
+    <a type="submit" id="randomButton" href="./Hike" data-navigo>Find a Hike! <i class="fas fa-hiking"></i></a>
   </form>
 </main>
 `;
 
+
+const states = "";
+switch (states) {
+  case 'Alabama':
+    return 'AL';
+    break;
+  case 'Alaksa':
+    return 'AK';
+    break;
+  case 'Arizona':
+    return 'AZ';
+    break;
+  case 'Arkansas':
+    return 'AR';
+    break;
+  case 'California':
+    return 'CA';
+    break;
+  case 'Colorado':
+    return 'CO';
+    break;
+  case 'Connecticut':
+    return 'CT';
+    break;
+  case 'Delaware':
+    return 'DE';
+    break;
+  case 'District of Columbia':
+    return 'DC';
+    break;
+  case 'Florida':
+    return 'FL';
+    break;
+  case 'Georgia':
+    return 'GA';
+    break;
+  case 'Hawaii':
+    return 'HI';
+    break;
+  case 'Idaho':
+    return 'ID';
+    break;
+  case 'Illinois':
+    return 'IL';
+    break;
+  case 'Indiana':
+    return 'IN';
+    break;
+  case 'Iowa':
+    return 'IA';
+    break;
+  case 'Kansas':
+    return 'KS';
+    break;
+  case 'Kentucky':
+    return 'KY';
+    break;
+  case 'Louisiana':
+    return 'LA';
+    break;
+  case 'Maine':
+    return 'ME';
+    break;
+  case 'Maryland':
+    return 'MD';
+    break;
+  case 'Massachusetts':
+    return 'MA';
+    break;
+  case 'Michigan':
+    return 'MI';
+    break;
+  case 'Minnesota':
+    return 'MN';
+    break;
+  case 'Mississippi':
+    return 'MS';
+    break;
+  case 'Missouri':
+    return 'MO';
+    break;
+  case 'Montana':
+    return 'MT';
+    break;
+  case 'Nebraska':
+    return 'NE';
+    break;
+  case 'Nevada':
+    return 'NV';
+    break;
+  case 'New Hampshire':
+    return 'NH';
+    break;
+  case 'New Jersey':
+    return 'NJ';
+    break;
+  case 'New Mexico':
+    return 'NM';
+    break;
+  case 'New York':
+    return 'NY';
+    break;
+  case 'North Carolina':
+    return 'NC';
+    break;
+  case 'North Dakota':
+    return 'ND';
+    break;
+  case 'Ohio':
+    return 'OH';
+    break;
+  case 'Oklahoma':
+    return 'OK';
+    break;
+  case 'Oregon':
+    return 'OR';
+    break;
+  case 'Pennsylvania':
+    return 'PA';
+    break;
+  case 'Rhode Island':
+    return 'RI';
+    break;
+  case 'South Carolina':
+    return 'SC';
+    break;
+  case 'South Dakota':
+    return 'SD';
+    break;
+  case 'Tennessee':
+    return 'TN';
+    break;
+  case 'Texas':
+    return 'TX';
+    break;
+  case 'Utah':
+    return 'UT';
+    break;
+  case 'Vermont':
+    return 'VT';
+    break;
+  case 'Virginia':
+    return 'VA';
+    break;
+  case 'Washington':
+    return 'WA';
+    break;
+  case 'West Virginia':
+    return 'WV';
+    break;
+  case 'Wisconsin':
+    return 'WI';
+    break;
+  case 'Wyoming':
+    return 'WY';
+    break;
+}
+
+const radius = "";
+switch (radius) {
+  case '5 miles':
+    return 5;
+    break;
+  case '10 miles':
+    return 10;
+    break;
+  case '25 miles':
+    return 25;
+    break;
+  case '50 miles':
+    return 50;
+    break;
+  case '100 miles':
+    return 100;
+    break;
+  case '200 miles':
+    return 200;
+    break;
+}
+
+const length = "";
+switch (length) {
+  case '5 miles':
+    return 5;
+    break;
+  case '10 miles':
+    return 10;
+    break;
+  case '20 miles':
+    return 20;
+    break;
+  default:
+    return 0;
+}
+
+// const diff = "";
+// switch (diff) {
+//   case 'Hike Difficulty Level'://Same question as above??
+//     return 0;
+//     break;
+//   case 'Easy':
+//     return [green, greenBlue];
+//     break;
+//   case 'Intermediate':
+//     return [blue, blueBlack];
+//     break;
+//   case 'Difficult':
+//     return [black];
+//     break;
+//}
+
 const randomButton = document.querySelector("#randomButton");
 
-// function sendData( data ) {
-//   console.log( 'Sending data' );
+function findAHike() {
 
-//   const XHR = new XMLHttpRequest();
+}
 
-//   let urlEncodedData = "",
-//       urlEncodedDataPairs = [],
-//       name;
 
-//   // Turn the data object into an array of URL-encoded key/value pairs.
-//   for( name in data ) {
-//     urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
-//   }
 
-//   // Combine the pairs into a single string and replace all %-encoded spaces to
-//   // the '+' character; matches the behaviour of browser form submissions.
-//   urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
 
-//   // Define what happens on successful data submission
-//   XHR.addEventListener( 'load', function(event) {
-//     alert( 'Yeah! Data sent and response loaded.' );
-//   } );
 
-//   // Define what happens in case of error
-//   XHR.addEventListener( 'error', function(event) {
-//     alert( 'Oops! Something went wrong.' );
-//   } );
 
-//   // Set up our request
-//   XHR.open( 'POST', 'https://example.com/cors.php' );
 
-//   // Add the required HTTP header for form data POST requests
-//   XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
 
-//   // Finally, send our data.
-//   XHR.send( urlEncodedData );
-// }
 
-// randomButton.addEventListener( 'click', function() {
-//   sendData( {test:'ok'} );
-// } )
+
+
+
+
+
+
+
+
+
+
+
+
+
