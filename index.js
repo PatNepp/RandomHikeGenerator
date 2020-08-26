@@ -53,7 +53,7 @@ router
 
 //RENDER FUNCTION//
 
-function render(st) {
+function render(st = state.Home) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
   ${Main(st)}
@@ -62,6 +62,9 @@ function render(st) {
   hideHeaderElements(st);
   randomJumbo(st);
   router.updatePageLinks();
+  // if (st === state.Home) {
+  //   findAHikeSubmit();
+  //}
 }
 
 // function randomNum() {
@@ -114,6 +117,31 @@ function hideHeaderElements(st) {
     document.querySelector(".signLogIn").style.display = "none";
   }
 }
+
+const findHikeBttn = document.getElementById("randomButton");
+console.log(findHikeBttn);
+
+findAHikeSubmit();
+
+function findAHikeSubmit() {
+  findHikeBttn.addEventListener("click", event => {
+    event.preventDefault();
+    let city = document.getElementById("city").value;
+    console.log(city);
+    let states = document.getElementsByClassName("stateName")[0].value;
+    console.log(states);
+    let radius = document.getElementsByClassName("miles")[0].value;
+    console.log(radius);
+    let length = document.getElementsByClassName("minHike")[0].value;
+    console.log(length);
+    let difficulty = document.getElementsByClassName("diff")[0].value;
+    console.log(difficulty);
+    console.log(city, states, radius, length, difficulty);
+    hikeInputs(city, states, radius, length, difficulty);
+  });
+}
+
+function hikeInputs(city, states, radius, length, difficulty) {}
 
 function signUpUser(st) {
   if (st.page === "SignUp") {
