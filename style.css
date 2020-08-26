@@ -48,6 +48,7 @@ header {
 .jumbotron {
   background-size: cover;
   height: 100vh;
+  background-repeat: no-repeat;
 }
 
 /* Log In Page */

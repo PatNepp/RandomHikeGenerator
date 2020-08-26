@@ -65,7 +65,7 @@ export default () => `
       </div>
       <div id="maxDistance">
         <label for="radius">Radius:</label>
-        <select name="radius">
+        <select id="radius" name="radius">
           <option class="miles" value="5">5 miles</option>
           <option class="miles" value="10">10 miles</option>
           <option class="miles" value="25">25 miles</option>
@@ -87,7 +87,7 @@ export default () => `
       </div>
       <div id="hikeDiff">
         <label for="difficulty">Difficulty:</label>
-        <select name="difficulty">
+        <select id="difficulty" name="difficulty">
           <option class="diff" value="hikeDiff">Hike Difficulty Level</option>
           <option class="diff" value="green">Easy</option>
           <option class="diff" value="blue">Intermediate</option>
