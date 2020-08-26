@@ -100,6 +100,7 @@ export default () => `
 </main>
 `;
 
+const city = ""//string.split(" ").join("")
 
 const states = "";
 switch (states) {
@@ -295,6 +296,24 @@ switch (length) {
     return 0;
 }
 
+function findAHikeSubmit(st) {
+  if (st.page === "Home") {
+    document.querySelector("form").addEventListener("submit", event => {
+      event.preventDefault();
+      let inputList = Array.from(event.target.element);
+      inputList.pop();
+      const inputs = inputList.map(input => input.value);
+      let city = inputs[0];
+      let states = inputs[1];
+      let radius = inputs[2];
+      let length = inputs[3];
+      let difficulty = inputs[4];
+    })
+  }
+}
+
+
+
 // const diff = "";
 // switch (diff) {
 //   case 'Hike Difficulty Level'://Same question as above??
@@ -310,30 +329,6 @@ switch (length) {
 //     return [black];
 //     break;
 //}
-
-const randomButton = document.querySelector("#randomButton");
-
-function findAHike() {
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

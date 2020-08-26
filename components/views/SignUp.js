@@ -4,14 +4,14 @@ export default () => `
     <form class="logInBox" action="">
       <h2 class="logInName">Sign Up</h2>
       <div class="labels">
-        <label for="email"><b>E-mail:</b></label>
-        <input type="email" placeholder="E-mail" name="email" required>
+        <label for="name"><b>Name:</b></label>
+        <input type="text" placeholder="Name" name="name" required>
+        <br>
+        <label for="email"><b>Email:</b></label>
+        <input type="email" placeholder="Email" name="email" required>
         <br>
         <label for="password"><b>Password:</b></label>
         <input type="password" placeholder="Password" name="password" required>
-        <br>
-        <label for="passwordRepeat"><b>Repeat Password:</b></label>
-        <input type="password" placeholder="Repeat Password" name="passwordRepeat" required>
         <br>
         <div class="logInButtons">
           <button type="submit" class="submitbtn">Sign Up</button>
