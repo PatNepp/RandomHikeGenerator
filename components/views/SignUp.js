@@ -1,17 +1,17 @@
 export default () => `
 <main class="jumbotron">
   <div class="logInPage">
-    <form class="logInBox" action="">
+    <form class="logInBox" id="signUpForm" action="">
       <h2 class="logInName">Sign Up</h2>
       <div class="labels">
         <label for="name"><b>Name:</b></label>
-        <input type="text" placeholder="Name" name="name" required>
+        <input id="name" type="text" placeholder="Name" name="name" required>
         <br>
         <label for="email"><b>Email:</b></label>
-        <input type="email" placeholder="Email" name="email" required>
+        <input id="email" type="email" placeholder="Email" name="email" required>
         <br>
         <label for="password"><b>Password:</b></label>
-        <input type="password" placeholder="Password" name="password" required>
+        <input id="password" type="password" placeholder="Password" name="password" required>
         <br>
         <div class="logInButtons">
           <button type="submit" class="submitbtn">Sign Up</button>

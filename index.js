@@ -62,6 +62,7 @@ function render(st = state.Home) {
   hideHeaderElements(st);
   randomJumbo(st);
   router.updatePageLinks();
+
   // if (st === state.Home) {
   //   findAHikeSubmit();
   //}
@@ -118,41 +119,65 @@ function hideHeaderElements(st) {
   }
 }
 
-const findHikeBttn = document.getElementById("randomButton");
-console.log(findHikeBttn);
+// const findHikeBttn = document.getElementById("randomButton");
+// console.log(findHikeBttn);
 
-findAHikeSubmit();
+// findAHikeSubmit();
 
-function findAHikeSubmit() {
-  findHikeBttn.addEventListener("click", event => {
+// function findAHikeSubmit() {
+//   findHikeBttn.addEventListener("click", event => {
+//     event.preventDefault();
+//     let city = document.getElementById("city").value;
+//     console.log(city);
+//     let states = document.getElementsByClassName("stateName")[0].value;
+//     console.log(states);
+//     let radius = document.getElementsByClassName("miles")[0].value;
+//     console.log(radius);
+//     let length = document.getElementsByClassName("minHike")[0].value;
+//     console.log(length);
+//     let difficulty = document.getElementsByClassName("diff")[0].value;
+//     console.log(difficulty);
+//     console.log(city, states, radius, length, difficulty);
+//     hikeInputs(city, states, radius, length, difficulty);
+//   });
+// }
+
+// function hikeInputs(city, states, radius, length, difficulty) {}
+signUpUser();
+function signUpUser() {
+  //if (st.page === "SignUp") {
+  document.getElementById("signUpForm").addEventListener("click", event => {
     event.preventDefault();
-    let city = document.getElementById("city").value;
-    console.log(city);
-    let states = document.getElementsByClassName("stateName")[0].value;
-    console.log(states);
-    let radius = document.getElementsByClassName("miles")[0].value;
-    console.log(radius);
-    let length = document.getElementsByClassName("minHike")[0].value;
-    console.log(length);
-    let difficulty = document.getElementsByClassName("diff")[0].value;
-    console.log(difficulty);
-    console.log(city, states, radius, length, difficulty);
-    hikeInputs(city, states, radius, length, difficulty);
-  });
-}
+    console.log(signUpUser());
+    // let inputList = Array.from(event.target.element);
+    // inputList.pop();
+    // const inputs = inputList.map(input => input.value);
+    let name = document.getElementById("name").value;
+    console.log(name);
+    let email = document.getElementById("email").value;
+    console.log(email);
+    let password = document.getElementById("password").value;
+    console.log(password);
 
-function hikeInputs(city, states, radius, length, difficulty) {}
-
-function signUpUser(st) {
-  if (st.page === "SignUp") {
-    document.querySelector("form").addEventListener("submit", event => {
-      event.preventDefault();
-      let inputList = Array.from(event.tartget.element);
-      inputList.pop();
-      const inputs = inputList.map(input => input.value);
-      let name = inputs[0];
-      let email = inputs[1];
-      let password = inputs[2];
+    auth.createUserWithEmailAndPassword(email, password).then(response => {
+      console.log("User Signed Up!");
+      console.log(response);
+      console.log(response.user);
+      addUserToStateAndDb(name, email, password);
+      render(state.Home);
     });
-  }
+  });
+  //}
+}
+function addUserToStateAndDb(name, email, password) {
+  state.User.name = name;
+  state.User.email = email;
+  state.User.loggedIn = true;
+
+  db.collection("users").add({
+    name: name,
+    email: email,
+    password: password,
+    signedIn: true
+  });
 }
