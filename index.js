@@ -17,34 +17,6 @@ router
   })
   .resolve();
 
-// let requestOptions = {
-//   method: "GET",
-//   redirect: "follow"
-// };
-
-// fetch(
-//   "https://www.hikingproject.com/data/get-trails?lat=38.6270&lon=-90.1994&maxDistace=25&maxResults=1&minLength=5&key=200863333-3ebda2f4593009e377ad78efc1fc91be",
-//   requestOptions
-// )
-//   .then(response => {
-//     response.json();
-//   })
-//   .then(json => console.log(json))
-//   .catch(error => console.log("error", error));
-
-//ACTIVE API CALL WHEN LIVE
-// axios
-//   .get(
-//     "https://www.hikingproject.com/data/get-trails?lat=38.6270&lon=-90.1994&maxDistace=25&minLength=5&maxResults=1&key=200863333-3ebda2f4593009e377ad78efc1fc91be"
-//   )
-//   .then(response => {
-//     response.data.trails.forEach(trail => {
-//       state.Hike.trails.push(trail);
-//     });
-//     console.log(response);
-//   })
-//   .catch(err => console.log(err));
-
 //RENDER FUNCTION//
 
 function render(st = state.Home) {
@@ -113,37 +85,76 @@ function hideHeaderElements(st) {
   }
 }
 
-const findHikeBttn = document.getElementById("randomButton");
-console.log(findHikeBttn);
+const findAHikeBttn = document.getElementById("randomButton");
+console.log(findAHikeBttn);
 
 findAHikeSubmit();
 
 function findAHikeSubmit() {
-  findHikeBttn.addEventListener("click", event => {
+  findAHikeBttn.addEventListener("click", event => {
     event.preventDefault();
     let city = document.getElementById("city").value;
-    console.log(city);
     let states = document.getElementById("states").value;
-    console.log(states);
     let cityState = `${city},${states}`;
-    console.log(cityState);
     let radius = document.getElementById("radius").value;
-    console.log(radius);
     let length = document.getElementById("length").value;
-    console.log(length);
-    let difficulty = document.getElementById("difficulty").value;
-    console.log(difficulty);
-    hikeInputs(cityState, radius, length, difficulty);
+    let difficult = document.getElementById("difficult").value;
+    console.log(difficult);
+    findLatLng(cityState);
+    findTrails(radius, length);
+    randomDiff(difficult);
   });
 }
 
-function hikeInputs(cityState, radius, length, difficulty) {
+function findLatLng(cityState) {
   axios
     .get(
       `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
-    .then(response => console.log(response.data));
+    .then(response => {
+      const longLat = response.data.results[0].locations[0].latLng;
+      findTrails(longLat.lat, longLat.lng);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 }
+
+//! add some message that tells the user their results didnt return anything. (success=1 && trail.length === 0 show error message)
+function findTrails(lat, lng) {
+  axios
+    .get(
+      `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=50&minLength=0&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
+    )
+    .then(response => {
+      if (response.data.trails.length > 0) {
+        const trailLists = response.data.trails;
+        randomDiff(trailLists);
+      }
+    });
+}
+
+function randomDiff(trailLists, difficult) {
+  console.log(trailLists);
+  console.log(difficult);
+}
+// trailLists();
+// function trailLists(trailLists, difficult) {
+//   if (trailLists.difficulty === difficult) {
+//     return trailLists.filter(trails => trails.difficulty === difficult);
+//   }
+// }
+// function randomDiff(trailLists, difficult) {
+//   console.log(`${difficult}`);
+// }
+
+//   // if (response.data.trails.length > 0) {
+//   //   response.data.trails.forEach(trail => {
+//   //     state.Hike.trails.push(trail);
+//   //   });
+//   }
+//   console.log(state.Hike);
+// })
 
 // signUpUser();
 // function signUpUser() {
