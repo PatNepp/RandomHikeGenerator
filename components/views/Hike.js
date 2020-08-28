@@ -1,20 +1,22 @@
 export default st => `
 <main class="jumbotron">
 <section id="trail">
-${st.trails
-  .map(trail => {
-    randomHikeInfo(trail);
-  })
-  .join("")}
+  ${randomHikeInfo(st.randArr)}
 </section>
 </main>`;
 
-function randomHikeInfo(trail) {
+function randomHikeInfo(randArr) {
   return `
     <div class="trailPost">
-      <h4>${trail.name}</h4>
-      <img src="${trail.imgMedium}">
-      <p>${trail.location}</p>
-      <p>${trail.summary}</p>
+      <h4>${randArr.name}</h4>
+      <img src="${randArr.imgMedium}">
+      <p>${randArr.location}</p>
+      <p>${randArr.summary}</p>
     </div>`;
 }
+
+// ${st.randArr
+//   .map(trail => {
+//     randomHikeInfo(trail);
+//   })
+//   .join("")}

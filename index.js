@@ -88,8 +88,8 @@ function hideHeaderElements(st) {
 const findAHikeBttn = document.getElementById("randomButton");
 console.log(findAHikeBttn);
 
+//pulling data from the form and creating variables for api calls
 findAHikeSubmit();
-
 function findAHikeSubmit() {
   findAHikeBttn.addEventListener("click", event => {
     event.preventDefault();
@@ -99,21 +99,25 @@ function findAHikeSubmit() {
     let radius = document.getElementById("radius").value;
     let length = document.getElementById("length").value;
     let difficult = document.getElementById("difficult").value;
+    const object = {
+      radius,
+      length,
+      difficult
+    };
     console.log(difficult);
-    findLatLng(cityState);
-    findTrails(radius, length);
-    randomDiff(difficult);
+    findLatLng(cityState, object);
   });
 }
 
-function findLatLng(cityState) {
+//API call to get lat and long for hiking api call
+function findLatLng(cityState, object) {
   axios
     .get(
       `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
     .then(response => {
       const longLat = response.data.results[0].locations[0].latLng;
-      findTrails(longLat.lat, longLat.lng);
+      findTrails(longLat.lat, longLat.lng, object);
     })
     .catch(err => {
       console.log(err);
@@ -121,23 +125,56 @@ function findLatLng(cityState) {
 }
 
 //! add some message that tells the user their results didnt return anything. (success=1 && trail.length === 0 show error message)
-function findTrails(lat, lng) {
+//API call to get an array of trails based on lat/long, radius, and hike length
+//Using trailLists.filter for difficulty
+function findTrails(lat, lng, object) {
+  console.log(object);
   axios
     .get(
-      `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=50&minLength=0&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
+      `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
     )
     .then(response => {
       if (response.data.trails.length > 0) {
         const trailLists = response.data.trails;
-        randomDiff(trailLists);
+        const diffArr = trailLists.filter(
+          trails => trails.difficulty === object.difficult
+        );
+        console.log(trailLists);
+        console.log(diffArr);
+        randomTrail(diffArr);
+        //randomDiff(trailLists, object.difficult);
       }
     });
 }
-
-function randomDiff(trailLists, difficult) {
-  console.log(trailLists);
-  console.log(difficult);
+//returning the random hike!!!
+function randomTrail(diffArr) {
+  let finalTrail = Math.floor(Math.random() * diffArr.length);
+  let randArr = diffArr[finalTrail];
+  console.log(randArr);
+  state.Hike.randArr = randArr;
+  console.log(state.Hike.randArr);
+  render(state.Hike);
+  //renderHikePage(randArr);
 }
+
+// function renderHikePage(randArr) {
+//   let trail = document.getElementById("trail");
+//   console.log(trail);
+//   randArr.forEach(trail => {
+//     state.Hike.trails.push(trail);
+//   });
+// }
+// function randomDiff(trailLists, difficult) {
+//   console.log(trailLists);
+//   console.log(difficult);
+//   console.log(trailLists.difficulty);
+//   if (trailLists.difficulty === "green") {
+//     const diffArr = trailLists.filter(
+//       trails => trails.difficulty === difficult
+//     );
+//     console.log(diffArr);
+//   }
+// }
 // trailLists();
 // function trailLists(trailLists, difficult) {
 //   if (trailLists.difficulty === difficult) {
@@ -147,11 +184,10 @@ function randomDiff(trailLists, difficult) {
 // function randomDiff(trailLists, difficult) {
 //   console.log(`${difficult}`);
 // }
-
-//   // if (response.data.trails.length > 0) {
-//   //   response.data.trails.forEach(trail => {
-//   //     state.Hike.trails.push(trail);
-//   //   });
+//   if (response.data.trails.length > 0) {
+//     response.data.trails.forEach(trail => {
+//       state.Hike.trails.push(trail);
+//     });
 //   }
 //   console.log(state.Hike);
 // })
