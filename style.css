@@ -405,6 +405,7 @@ footer {
   #randomButton:hover {
     font-size: 60px;
     padding: 25px;
+  }
 }
 
 @media (max-width: 690px) {
