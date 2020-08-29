@@ -115,7 +115,7 @@ function findAHikeSubmit() {
 function findLatLng(cityState, object) {
   axios
     .get(
-      `https://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
+      `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
     .then(response => {
       const longLat = response.data.results[0].locations[0].latLng;
@@ -133,7 +133,7 @@ function findTrails(lat, lng, object) {
   console.log(object);
   axios
     .get(
-      `https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
+      `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
     )
     .then(response => {
       if (response.data.trails.length > 0) {
