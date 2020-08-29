@@ -41,33 +41,36 @@ function render(st = state.Home) {
 //RANDOM JUMBOTRON//
 function randomJumbo(st) {
   const jumboPics = [
-    "url(https://images.unsplash.com/photo-1505521216430-8b73b2067df0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1507&q=80)"
-    // "url(https://images.unsplash.com/photo-1595821927361-4238421d7baa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1503&q=80)",
-    // "url(https://images.unsplash.com/photo-1576225106612-ea30b5bb16b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1464&q=80)",
-    // "url(https://images.unsplash.com/photo-1596245830906-ce7644a63ecb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1424&q=80)",
-    // "url(https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1438&q=80)",
-    // "url(https://images.unsplash.com/photo-1591806336026-f825d72071a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80)",
-    // "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
-    // "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
-    // "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
-    // "url(https://lh3.googleusercontent.com/aQDmYfKXZ6lqwa9IuyCi4SljsPLhKQWBYoqxR81LCNneP-XjRY47jCYHgDAlN73h-mEzpJKvvTxehnfEwInUeYqNel_c5VEkTP55HblbE9XhWC-BotoyNmybwdrQK0fgobI5IN0bwwA=w2400)",
-    // "url(https://lh3.googleusercontent.com/lOVMjbuSkxwoaEOsnUbtrHTEHxsnoldd82XRNHUWVx9gct32QcOnlJOdNrIJ91YwFSljcrwC4X8_UU43hWNvo3Id5q9wNBBpcvRyI-70eTY3IF0tRxQTJ4OzWG8ohRHuP9UTXhmilTk=w2400)",
-    // "url(https://lh3.googleusercontent.com/tHWrf5KRBo-FJF-TjfoXE0nF2U-rYfmwImu3l_ChzogjuryusPjgcs5zdtJT9ENFZTHz8wmZP4lc_CfR7WdpLAfGNVqtFziF8uiXyF0zblkj30pxxC3iqkd552PotLwfIrL1W9Fs8AI=w2400)",
-    // "url(https://lh3.googleusercontent.com/p7ctDRVWPWsm3yS6m3R40yAOJu5V413JAl5smP_Maw-HqHFraT_BN8Lj8MH4YcIYqwizqoxrLoRNm8DEpajv8G1uaQqG8n57_tWxcs8g9MvRHZFEG7YQguqcZ2fwwAcYyk2VABlvLSk=w2400)",
-    // "url(https://lh3.googleusercontent.com/pX8C6jGHL4pWoVfj8MJ_3JNcBadbdd0kvNOqfhcSZPZst_Tb0SxKjSrBMhA3afKYF3RKtoGShyYvtqbYYRbE2lbGFAoPFwr0z4fhSHMAozjN8nIMTjXAFciaDe6693r4gUIShVADVrs=w2400)",
-    // "url(https://lh3.googleusercontent.com/-vVQ0BDcXC9i6q7pcyudNlfqgDGCYhVCmxMeOVQ3CfCE4mAErvQcqruaP02prSLh7x-NZlx-v4YFyIhG8SG82NsiI_RMZmsuCqrTxHaXvl-YCSl2bETrQw8rtAU62JuOObBgHw0q6Yw=w2400)",
-    // "url(https://lh3.googleusercontent.com/mlw-uPAQik7eXKzpzAOk5CSiW5ubt-A6n3etvWWNyNRaRI8B8ni3K7wMumh9tvLdFA3BqBOU_pxSUX0m9vd6MtI7oedcBNFFsmr5TsA_MsNZR-0w62PmDmv3fpnQydNN10194De_yW4=w2400)",
-    // "url(https://lh3.googleusercontent.com/SMEu8tKjhzt5a5MPrt8-NwVnRBQSq0o7R1qt00WFKPBK-Ugz29b-OYseyDbT0DQa05nnOoEd5j8itnb3RA8y8bT8uRv1C1kH-B0hZrjIbNFs8sbL_seW-tIO7DPf-WwoDn7ASNIX5tY=w2400)",
-    // "url(https://lh3.googleusercontent.com/5SXP_aqY9FRbFCuJ2QgcvKQnVB3xc8JbpKIp4nV7rmnrQsexoUtZLVIs1YzCwIjVjZ8NEwBCVG4oYXoC0N_6BGXO6fVcrRedqZ-wT_jaRcKJSmYnrFiWdo_4oJf9EUUo4UR-X4tNNWI=w2400)",
-    // "url(https://lh3.googleusercontent.com/L-WPNDx11PNGXjDKmOXOkgnHw8fSnMEm3zKyxh4vLqdDx7lZ8D2tNGhRuX5W6_T4Z3ubP2nxVgXh1sdu4UWM4oVlejjqOUURVMJ-bMVHpOUXo_VDgtcaGNwEJJfyXLZMKOWwDgSONxE=w2400)",
-    // "url(https://lh3.googleusercontent.com/6cJeDleGsKVDQnhRr1ItXio81zewRJrAicLcjPdfNyvjlwJVE_ZKHU3IK1niJXmpPBa2DHb6fdwdi4pQa9xiQs8I577F34WqmoEzfBoZ6nlk5BmOsG9tC_VRkRRDQ2jw_DhAG6GrYoc=w2400)",
-    // "url(https://lh3.googleusercontent.com/yoTFDmL4HU0S-5gEIb9gQ6lavO3PjFkegk2HGrDpmW7_JkSoZXW53Rnecxvp_I88TatwbbMvqYhAOBKkkEgXTatNlG8kdib11pnuZrRS97qWlcMY442ygFmmKZFF_lsym7NSHoO37oI=w2400)",
-    // "url(https://lh3.googleusercontent.com/HRYX-ye3ksLee84kd5OaGPGm9giQbVw83EkTgbvSMYh10ikVtVR9kwPU6XGUqsmckpPQYg7C8dDkwvpi7erEZFpa4MwNjOqPpqW3bN7ZcIsF-rlAFK152Vavz2vSGN2yO3kC1xqtmNU=w2400)",
-    // "url(https://lh3.googleusercontent.com/urQlw2oVrKwRCnnEDhjnig2GJGCk9JO_0LJrIfiaS3yck3RxuXOWkwXWxcta9ZdATOTFuj9wUATujFz61f86pNo1a9G8L0H3-zowMO9ao6jE813HfMFyWCSaHxIWW-5NwD7hueiZynM=w2400)"
+    "url(https://images.unsplash.com/photo-1505521216430-8b73b2067df0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1507&q=80)",
+    "url(https://images.unsplash.com/photo-1595821927361-4238421d7baa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1503&q=80)",
+    "url(https://images.unsplash.com/photo-1576225106612-ea30b5bb16b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1464&q=80)",
+    "url(https://images.unsplash.com/photo-1596245830906-ce7644a63ecb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1424&q=80)",
+    "url(https://images.unsplash.com/photo-1591815707291-b18c9f24fb40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1438&q=80)",
+    "url(https://images.unsplash.com/photo-1591806336026-f825d72071a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1506&q=80)",
+    "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
+    "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
+    "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
+    "url(https://lh3.googleusercontent.com/aQDmYfKXZ6lqwa9IuyCi4SljsPLhKQWBYoqxR81LCNneP-XjRY47jCYHgDAlN73h-mEzpJKvvTxehnfEwInUeYqNel_c5VEkTP55HblbE9XhWC-BotoyNmybwdrQK0fgobI5IN0bwwA=w2400)",
+    "url(https://lh3.googleusercontent.com/lOVMjbuSkxwoaEOsnUbtrHTEHxsnoldd82XRNHUWVx9gct32QcOnlJOdNrIJ91YwFSljcrwC4X8_UU43hWNvo3Id5q9wNBBpcvRyI-70eTY3IF0tRxQTJ4OzWG8ohRHuP9UTXhmilTk=w2400)",
+    "url(https://lh3.googleusercontent.com/tHWrf5KRBo-FJF-TjfoXE0nF2U-rYfmwImu3l_ChzogjuryusPjgcs5zdtJT9ENFZTHz8wmZP4lc_CfR7WdpLAfGNVqtFziF8uiXyF0zblkj30pxxC3iqkd552PotLwfIrL1W9Fs8AI=w2400)",
+    "url(https://lh3.googleusercontent.com/p7ctDRVWPWsm3yS6m3R40yAOJu5V413JAl5smP_Maw-HqHFraT_BN8Lj8MH4YcIYqwizqoxrLoRNm8DEpajv8G1uaQqG8n57_tWxcs8g9MvRHZFEG7YQguqcZ2fwwAcYyk2VABlvLSk=w2400)",
+    "url(https://lh3.googleusercontent.com/pX8C6jGHL4pWoVfj8MJ_3JNcBadbdd0kvNOqfhcSZPZst_Tb0SxKjSrBMhA3afKYF3RKtoGShyYvtqbYYRbE2lbGFAoPFwr0z4fhSHMAozjN8nIMTjXAFciaDe6693r4gUIShVADVrs=w2400)",
+    "url(https://lh3.googleusercontent.com/-vVQ0BDcXC9i6q7pcyudNlfqgDGCYhVCmxMeOVQ3CfCE4mAErvQcqruaP02prSLh7x-NZlx-v4YFyIhG8SG82NsiI_RMZmsuCqrTxHaXvl-YCSl2bETrQw8rtAU62JuOObBgHw0q6Yw=w2400)",
+    "url(https://lh3.googleusercontent.com/mlw-uPAQik7eXKzpzAOk5CSiW5ubt-A6n3etvWWNyNRaRI8B8ni3K7wMumh9tvLdFA3BqBOU_pxSUX0m9vd6MtI7oedcBNFFsmr5TsA_MsNZR-0w62PmDmv3fpnQydNN10194De_yW4=w2400)",
+    "url(https://lh3.googleusercontent.com/SMEu8tKjhzt5a5MPrt8-NwVnRBQSq0o7R1qt00WFKPBK-Ugz29b-OYseyDbT0DQa05nnOoEd5j8itnb3RA8y8bT8uRv1C1kH-B0hZrjIbNFs8sbL_seW-tIO7DPf-WwoDn7ASNIX5tY=w2400)",
+    "url(https://lh3.googleusercontent.com/5SXP_aqY9FRbFCuJ2QgcvKQnVB3xc8JbpKIp4nV7rmnrQsexoUtZLVIs1YzCwIjVjZ8NEwBCVG4oYXoC0N_6BGXO6fVcrRedqZ-wT_jaRcKJSmYnrFiWdo_4oJf9EUUo4UR-X4tNNWI=w2400)",
+    "url(https://lh3.googleusercontent.com/L-WPNDx11PNGXjDKmOXOkgnHw8fSnMEm3zKyxh4vLqdDx7lZ8D2tNGhRuX5W6_T4Z3ubP2nxVgXh1sdu4UWM4oVlejjqOUURVMJ-bMVHpOUXo_VDgtcaGNwEJJfyXLZMKOWwDgSONxE=w2400)",
+    "url(https://lh3.googleusercontent.com/6cJeDleGsKVDQnhRr1ItXio81zewRJrAicLcjPdfNyvjlwJVE_ZKHU3IK1niJXmpPBa2DHb6fdwdi4pQa9xiQs8I577F34WqmoEzfBoZ6nlk5BmOsG9tC_VRkRRDQ2jw_DhAG6GrYoc=w2400)",
+    "url(https://lh3.googleusercontent.com/yoTFDmL4HU0S-5gEIb9gQ6lavO3PjFkegk2HGrDpmW7_JkSoZXW53Rnecxvp_I88TatwbbMvqYhAOBKkkEgXTatNlG8kdib11pnuZrRS97qWlcMY442ygFmmKZFF_lsym7NSHoO37oI=w2400)",
+    "url(https://lh3.googleusercontent.com/HRYX-ye3ksLee84kd5OaGPGm9giQbVw83EkTgbvSMYh10ikVtVR9kwPU6XGUqsmckpPQYg7C8dDkwvpi7erEZFpa4MwNjOqPpqW3bN7ZcIsF-rlAFK152Vavz2vSGN2yO3kC1xqtmNU=w2400)",
+    "url(https://lh3.googleusercontent.com/urQlw2oVrKwRCnnEDhjnig2GJGCk9JO_0LJrIfiaS3yck3RxuXOWkwXWxcta9ZdATOTFuj9wUATujFz61f86pNo1a9G8L0H3-zowMO9ao6jE813HfMFyWCSaHxIWW-5NwD7hueiZynM=w2400)"
   ];
   let randomPic = Math.floor(Math.random() * jumboPics.length);
   document.querySelector(".jumbotron").style.background = jumboPics[randomPic];
   if (st.page !== "Profile") {
+    return jumboPics[randomPic];
+  }
+  if (st.page !== "Hike") {
     return jumboPics[randomPic];
   }
 }
@@ -86,7 +89,6 @@ function hideHeaderElements(st) {
 }
 
 const findAHikeBttn = document.getElementById("randomButton");
-console.log(findAHikeBttn);
 
 //pulling data from the form and creating variables for api calls
 findAHikeSubmit();
@@ -143,54 +145,22 @@ function findTrails(lat, lng, object) {
         console.log(diffArr);
         randomTrail(diffArr);
         //randomDiff(trailLists, object.difficult);
+      } else {
       }
+    })
+    .catch(err => {
+      console.log(err);
     });
 }
+
 //returning the random hike!!!
 function randomTrail(diffArr) {
   let finalTrail = Math.floor(Math.random() * diffArr.length);
   let randArr = diffArr[finalTrail];
-  console.log(randArr);
   state.Hike.randArr = randArr;
   console.log(state.Hike.randArr);
   render(state.Hike);
-  //renderHikePage(randArr);
 }
-
-// function renderHikePage(randArr) {
-//   let trail = document.getElementById("trail");
-//   console.log(trail);
-//   randArr.forEach(trail => {
-//     state.Hike.trails.push(trail);
-//   });
-// }
-// function randomDiff(trailLists, difficult) {
-//   console.log(trailLists);
-//   console.log(difficult);
-//   console.log(trailLists.difficulty);
-//   if (trailLists.difficulty === "green") {
-//     const diffArr = trailLists.filter(
-//       trails => trails.difficulty === difficult
-//     );
-//     console.log(diffArr);
-//   }
-// }
-// trailLists();
-// function trailLists(trailLists, difficult) {
-//   if (trailLists.difficulty === difficult) {
-//     return trailLists.filter(trails => trails.difficulty === difficult);
-//   }
-// }
-// function randomDiff(trailLists, difficult) {
-//   console.log(`${difficult}`);
-// }
-//   if (response.data.trails.length > 0) {
-//     response.data.trails.forEach(trail => {
-//       state.Hike.trails.push(trail);
-//     });
-//   }
-//   console.log(state.Hike);
-// })
 
 // signUpUser();
 // function signUpUser() {

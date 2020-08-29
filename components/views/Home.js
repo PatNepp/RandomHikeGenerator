@@ -79,6 +79,7 @@ export default () => `
         <label for="length">Length:</label>
         <select id="length" name="length">
           <option class="minHike" value="0">Minimum Hike Length</option>
+          <option class="minHike" value="1">1 mile</option>
           <option class="minHike" value="5">5 miles</option>
           <option class="minHike" value="10">10 miles</option>
           <option class="minHike" value="15">15 miles</option>
@@ -88,10 +89,12 @@ export default () => `
       <div id="hikeDiff">
         <label for="difficulty">Difficulty:</label>
         <select id="difficult" name="difficulty">
-          <option class="diff" value="hikeDiff">Hike Difficulty Level</option>
+          <option class="diff" value="none">No Preference</option>
           <option class="diff" value="green">Easy</option>
+          <option class="diff" value="greenBlue">Easy/Intermediate</option>
           <option class="diff" value="blue">Intermediate</option>
-          <option class="diff" value="black">Difficult</option>
+          <option class="diff" value="blueBlack">Difficult</option>
+          <option class="diff" value="black">Very Difficult</option>
         </select>
       </div>
     </div>
