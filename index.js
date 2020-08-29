@@ -115,7 +115,7 @@ function findAHikeSubmit() {
 function findLatLng(cityState, object) {
   axios
     .get(
-      `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
+      `https://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
     .then(response => {
       const longLat = response.data.results[0].locations[0].latLng;
