@@ -496,18 +496,15 @@ footer {
     align-items: center;
     height: 10vh;
   }
-
   .RHG {
     font-size: 26px;
     font-weight: normal;
     text-align: center;
   }
-
   .signLogIn {
     display: flex;
     flex-direction: row;
   }
-
   .signLogIn > a {
     font-size: 15px;
     font-weight: normal;
@@ -535,15 +532,14 @@ footer {
     justify-items: center;
     align-items: center;*/
   }
-
   .locationFilters > div > label {
     font-size: 20px;
     font-weight: bold;
     text-shadow: -1px 1px 5px #fff;
   }
-
   #randomButton {
     font-size: 45px;
     padding: 15px;
     border: 3px black ridge;
   }
+}
