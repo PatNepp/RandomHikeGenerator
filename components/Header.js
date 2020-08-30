@@ -1,4 +1,4 @@
-export default st => `
+export default () => `
 <header>
   <a href="./Home" data-navigo class="RHG"><i class="fas fa-mountain"></i> Random Hike Generator <i class="fas fa-mountain"></i></a>
   <div class="signLogIn">

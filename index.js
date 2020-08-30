@@ -114,16 +114,21 @@ function findAHikeSubmit() {
 
 //API call to get lat and long for hiking api call
 function findLatLng(cityState, object) {
+  console.log(cityState);
   axios
     .get(
       `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
     .then(response => {
       const longLat = response.data.results[0].locations[0].latLng;
+      console.log(longLat);
       findTrails(longLat.lat, longLat.lng, object);
     })
     .catch(err => {
       console.log(err);
+      return alert(
+        "Oops! Something is wrong with the city and/or the state you chose. Check for errors and try again! Enjoy your hike!"
+      );
     });
 }
 
@@ -139,6 +144,7 @@ function findTrails(lat, lng, object) {
     .then(response => {
       if (response.data.trails.length > 0) {
         const trailLists = response.data.trails;
+        console.log(trailLists);
         if (object.difficult === "none") {
           let diffArr = trailLists;
           randomTrail(diffArr);
@@ -157,13 +163,13 @@ function findTrails(lat, lng, object) {
         // );
         //console.log(diffArr);
         //randomTrail(diffArr);
-      } else {
-        let message = new Error("Oops, no results. Try again");
-        throw message;
       }
     })
     .catch(err => {
       console.log(err);
+      return alert(
+        "Oops! No hikes matching your search. Try different filter options. Enjoy your hike!"
+      );
     });
 }
 
