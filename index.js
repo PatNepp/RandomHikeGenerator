@@ -3,7 +3,7 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
-import { auth, db } from "./firebase";
+//import { auth, db } from "./firebase";
 
 //ROUTER//
 const router = new Navigo(window.location.origin);
@@ -137,12 +137,25 @@ function findTrails(lat, lng, object) {
     .then(response => {
       if (response.data.trails.length > 0) {
         const trailLists = response.data.trails;
-        console.log(trailLists);
-        const diffArr = trailLists.filter(
-          trails => trails.difficulty === object.difficult
-        );
-        console.log(diffArr);
-        randomTrail(diffArr);
+        if (object.difficult === "none") {
+          let diffArr = trailLists;
+          randomTrail(diffArr);
+          console.log(diffArr);
+        } else {
+          let diffArr = trailLists.filter(
+            trails => trails.difficulty === object.difficult
+          );
+          randomTrail(diffArr);
+          console.log(diffArr);
+        }
+
+        // const trailLists = response.data.trails;
+        // console.log(trailLists);
+        // const diffArr = trailLists.filter(
+        //   trails => trails.difficulty === object.difficult
+        // );
+        //console.log(diffArr);
+        //randomTrail(diffArr);
       }
     })
     .catch(err => {
@@ -154,8 +167,8 @@ function findTrails(lat, lng, object) {
 function randomTrail(diffArr) {
   let finalTrail = Math.floor(Math.random() * diffArr.length);
   let randArr = diffArr[finalTrail];
+  console.log(randArr);
   state.Hike.randArr = randArr;
-  console.log(state.Hike.randArr);
   render(state.Hike);
 }
 
