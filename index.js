@@ -28,6 +28,8 @@ function render(st = state.Home) {
   hideHeaderElements(st);
   randomJumbo(st);
   router.updatePageLinks();
+  // findNewHike();
+  // randomTrail();
 
   // if (st === state.Home) {
   //   findAHikeSubmit();
@@ -174,6 +176,35 @@ function randomTrail(diffArr) {
   render(state.Hike);
 }
 
+// let button = document.getElementsByClassName("saveMe");
+// button.addEventListener(
+//   "click",
+//   function() {
+//     if (button.getAttribute("Saved!") === button.innerHTML) {
+//       button.innerHTML = button.getAttribute("Save this Hike");
+//     } else {
+//       button.setAttribute("Save this Hike", button.innerHTML);
+//       button.innerHTML = button.getAttribute("Saved!");
+//     }
+//   },
+//   false
+// );
+
+// change();
+// function change() {
+//   let saveMe = document.getElementsByClassName("saveMe");
+//   if (saveMe.value === "Save this Hike") saveMe.value === "Saved!";
+//   else saveMe.value === "Saved!";
+// }
+
+// function findNewHike() {
+//   document
+//     .getElementsByClassName("findNewOne")
+//     .addEventListener("click", event => {
+//       event.preventDefault();
+//       render(state.Home);
+//     });
+// }
 // signUpUser();
 // function signUpUser() {
 //   //if (st.page === "SignUp") {

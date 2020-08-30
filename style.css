@@ -357,12 +357,21 @@ button {
   box-shadow: 2px 2px #0d1c18b9;
   font-size: 20px;
   padding: 5px;
+
+}
+
+.saveMe.on:after {
+  content: "Saved!";
+}
+
+/* .saveMe:active {
+  background: green;
 }
 
 .saveMe:focus {
   background: green;
   font-weight: bold;
-}
+} */
 
   #moreInfo>h3 {
   grid-row-start: 2;
