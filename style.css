@@ -239,8 +239,8 @@ button {
 /*Hike Page*/
 #trail {
   display: grid;
-  grid-template-rows: 3% repeat(6, 1fr) 3%;
-  grid-template-columns: 10% repeat(4, 1fr) 10%;
+  grid-template-rows: 3% repeat(8, 1fr) 3%;
+  grid-template-columns: 5% repeat(4, 1fr) 5%;
   gap: 15px;
   justify-content: center;
   height: 100vh;
@@ -260,13 +260,12 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
 }
 
 #trailInfo>h1{
   font-style: italic;
   text-decoration: underline;
-  font-size: xx-large;
+  font-size: large;
   margin-bottom: 4px;
 }
 
@@ -274,9 +273,13 @@ button {
   margin: 0px;
 }
 
+#trailInfo>h5 {
+  margin-top: 2px;
+}
+
 #trailImage {
   grid-row-start: 4;
-  grid-row-end: 7;
+  grid-row-end: 9;
   grid-column-start: 2;
   grid-column-end: 4;
   background: #bcd1f0;
@@ -294,7 +297,7 @@ button {
 
 #trailMap {
   grid-row-start: 4;
-  grid-row-end: 8;
+  grid-row-end: 9;
   grid-column-start: 4;
   grid-column-end: 6;
   background: #bcd1f0;
@@ -305,15 +308,15 @@ button {
   justify-content: center;
 }
 
-#trailMap>img {
+#trailMap > img {
   border: 6px #0d1c18 double;
 }
 
 #moreInfo {
-  grid-row-start: 7;
-  grid-row-end: 8;
+  grid-row-start: 9;
+  grid-row-end: 10;
   grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-end: 6;
   background: #bcd1f0;
   border: 6px #0d1c18 double;
   border-radius: 20px;
@@ -322,6 +325,7 @@ button {
   grid-template-columns: 1fr 1fr;
   justify-self: center;
   align-self: center;
+  padding: 10px;
 }
 
 #moreInfo > .findNewOne {
@@ -340,7 +344,7 @@ button {
   margin: 3px;
 }
 
-#moreInfo > .saveMe {
+.saveMe {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 2;
@@ -353,7 +357,12 @@ button {
   box-shadow: 2px 2px #0d1c18b9;
   font-size: 20px;
   padding: 5px;
-  }
+}
+
+.saveMe:focus {
+  background: green;
+  font-weight: bold;
+}
 
   #moreInfo>h3 {
   grid-row-start: 2;
@@ -361,6 +370,7 @@ button {
   grid-column-start: 1;
   grid-column-end: 3;
   text-align: center;
+  margin: 10px;
   }
 
 /*Footer*/
@@ -369,14 +379,23 @@ footer {
   justify-content: space-evenly;
   align-items: center;
   background-color: #0d1c18;
+  color: #c8b0a7;
   text-align: center;
   border-top: 3px black solid;
 }
 
 #contactFormLink {
-  color: black;
+  color: #c8b0a7;
 }
 
+
+
+@media (max-width: 840px) {
+  #trailMap > img {
+    height: 250px;
+    width: 250px;
+  }
+}
 
 @media (max-width: 800px) {
   .RHG {
@@ -406,9 +425,20 @@ footer {
     font-size: 60px;
     padding: 25px;
   }
+  .saveMe {
+    font-size: 15px;
+    padding: 3px;
+  }
+  #moreInfo > .findNewOne {
+    font-size: 15px;
+    padding: 3px;
+  }
+  #trailInfo > h1 {
+    font-size: 20px;
+  }
 }
 
-@media (max-width: 690px) {
+@media (max-width: 700px) {
   .RHG {
     font-size: 27px;
     padding: 3px;
@@ -449,6 +479,33 @@ footer {
     font-size: 55px;
     padding: 25px;
   }
+  #trailMap > img {
+    height: 200px;
+    width: 200px;
+  }
+  #trailInfo {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    justify-self: stretch;
+    background: #bcd1f0;
+    border: 6px #0d1c18 double;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #trailInfo>h1{
+    font-size: large;
+  }
+  #trailInfo>h4 {
+    font-size: 15px;
+  }
+  #trailInfo>h5 {
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 630px) {
@@ -485,6 +542,25 @@ footer {
   #randomButton {
     font-size: 45px;
     padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  #trail {
+    background: #c8b0a7;
+    display: flex;
+    flex-direction: column;
+  }
+  #trailImage {
+    background: none;
+    border: none;
+  }
+  #trailMap {
+    background: none;
+    border: none;
+  }
+  #moreInfo {
+    padding: 3px;
   }
 }
 
@@ -543,3 +619,4 @@ footer {
     border: 3px black ridge;
   }
 }
+

@@ -92,7 +92,7 @@ export default () => `
           <option class="diff" value="none">No Preference</option>
           <option class="diff" value="green">Easy</option>
           <option class="diff" value="blue">Intermediate</option>
-          <option class="diff" value="black">Very Difficult</option>
+          <option class="diff" value="black">Difficult</option>
         </select>
       </div>
     </div>

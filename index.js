@@ -148,7 +148,6 @@ function findTrails(lat, lng, object) {
           randomTrail(diffArr);
           console.log(diffArr);
         }
-
         // const trailLists = response.data.trails;
         // console.log(trailLists);
         // const diffArr = trailLists.filter(
@@ -156,6 +155,9 @@ function findTrails(lat, lng, object) {
         // );
         //console.log(diffArr);
         //randomTrail(diffArr);
+      } else {
+        let message = new Error("Oops, no results. Try again");
+        throw message;
       }
     })
     .catch(err => {
