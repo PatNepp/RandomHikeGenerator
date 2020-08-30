@@ -89,11 +89,9 @@ export default () => `
       <div id="hikeDiff">
         <label for="difficulty">Difficulty:</label>
         <select id="difficult" name="difficulty">
-          <option class="diff" value="none">No Preference</option>
+          <option class="diff" value="greenBlue">No Preference</option>
           <option class="diff" value="green">Easy</option>
-          <option class="diff" value="greenBlue">Easy/Intermediate</option>
           <option class="diff" value="blue">Intermediate</option>
-          <option class="diff" value="blueBlack">Difficult</option>
           <option class="diff" value="black">Very Difficult</option>
         </select>
       </div>

@@ -106,7 +106,6 @@ function findAHikeSubmit() {
       length,
       difficult
     };
-    console.log(difficult);
     findLatLng(cityState, object);
   });
 }
@@ -133,19 +132,17 @@ function findTrails(lat, lng, object) {
   console.log(object);
   axios
     .get(
-      `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=100&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
+      `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=200&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
     )
     .then(response => {
       if (response.data.trails.length > 0) {
         const trailLists = response.data.trails;
+        console.log(trailLists);
         const diffArr = trailLists.filter(
           trails => trails.difficulty === object.difficult
         );
-        console.log(trailLists);
         console.log(diffArr);
         randomTrail(diffArr);
-        //randomDiff(trailLists, object.difficult);
-      } else {
       }
     })
     .catch(err => {
