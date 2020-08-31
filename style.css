@@ -390,6 +390,18 @@ footer {
 
 
 
+@media (min-width: 1350px) {
+  .theButton {
+    background: url("https://lh3.googleusercontent.com/bmS54c2kewOYmUUqxg_g_PVtm-cfPIXs9VI0d0L918ePl6Wgd4Lsgh02yDC5N5hoeU6z4Iu0SKAcD97UzHQAurm7LIG5ivKU9OH_Hpn7ydPaZnBcXd2SYkqe2Z6KKDfmPQZQdaf8stI=w2400");
+  }
+}
+
+@media (min-width: 1600px) {
+  .theButton {
+    background: url("https://lh3.googleusercontent.com/bmS54c2kewOYmUUqxg_g_PVtm-cfPIXs9VI0d0L918ePl6Wgd4Lsgh02yDC5N5hoeU6z4Iu0SKAcD97UzHQAurm7LIG5ivKU9OH_Hpn7ydPaZnBcXd2SYkqe2Z6KKDfmPQZQdaf8stI=w2400");
+  }
+}
+
 @media (max-width: 840px) {
   #trailMap > img {
     height: 250px;

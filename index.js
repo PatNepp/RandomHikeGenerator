@@ -52,11 +52,7 @@ function randomJumbo(st) {
     "url(https://images.unsplash.com/photo-1544558635-667480601430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1445&q=80)",
     "url(https://images.unsplash.com/photo-1561815582-c13544ea0110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)",
     "url(https://images.unsplash.com/photo-1580952153875-fcb0edb9df47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1482&q=80)",
-    "url(https://lh3.googleusercontent.com/aQDmYfKXZ6lqwa9IuyCi4SljsPLhKQWBYoqxR81LCNneP-XjRY47jCYHgDAlN73h-mEzpJKvvTxehnfEwInUeYqNel_c5VEkTP55HblbE9XhWC-BotoyNmybwdrQK0fgobI5IN0bwwA=w2400)",
-    "url(https://lh3.googleusercontent.com/lOVMjbuSkxwoaEOsnUbtrHTEHxsnoldd82XRNHUWVx9gct32QcOnlJOdNrIJ91YwFSljcrwC4X8_UU43hWNvo3Id5q9wNBBpcvRyI-70eTY3IF0tRxQTJ4OzWG8ohRHuP9UTXhmilTk=w2400)",
-    "url(https://lh3.googleusercontent.com/tHWrf5KRBo-FJF-TjfoXE0nF2U-rYfmwImu3l_ChzogjuryusPjgcs5zdtJT9ENFZTHz8wmZP4lc_CfR7WdpLAfGNVqtFziF8uiXyF0zblkj30pxxC3iqkd552PotLwfIrL1W9Fs8AI=w2400)",
-    "url(https://lh3.googleusercontent.com/p7ctDRVWPWsm3yS6m3R40yAOJu5V413JAl5smP_Maw-HqHFraT_BN8Lj8MH4YcIYqwizqoxrLoRNm8DEpajv8G1uaQqG8n57_tWxcs8g9MvRHZFEG7YQguqcZ2fwwAcYyk2VABlvLSk=w2400)",
-    "url(https://lh3.googleusercontent.com/pX8C6jGHL4pWoVfj8MJ_3JNcBadbdd0kvNOqfhcSZPZst_Tb0SxKjSrBMhA3afKYF3RKtoGShyYvtqbYYRbE2lbGFAoPFwr0z4fhSHMAozjN8nIMTjXAFciaDe6693r4gUIShVADVrs=w2400)",
+    "url(https://lh3.googleusercontent.com/PQkusTA-OxTz5Xn-2BR50LL4Ho4uq9FLZQfNp7A_4bvuP53sSg66upXNx19xis65t3DhShzNEWUu-HILe3Aiq0JSh22_16LRSgB_1o5m4w9D8nwhKRWfeT9JgV4gUIaUtxGtSu5wqc4=w2400)",
     "url(https://lh3.googleusercontent.com/-vVQ0BDcXC9i6q7pcyudNlfqgDGCYhVCmxMeOVQ3CfCE4mAErvQcqruaP02prSLh7x-NZlx-v4YFyIhG8SG82NsiI_RMZmsuCqrTxHaXvl-YCSl2bETrQw8rtAU62JuOObBgHw0q6Yw=w2400)",
     "url(https://lh3.googleusercontent.com/mlw-uPAQik7eXKzpzAOk5CSiW5ubt-A6n3etvWWNyNRaRI8B8ni3K7wMumh9tvLdFA3BqBOU_pxSUX0m9vd6MtI7oedcBNFFsmr5TsA_MsNZR-0w62PmDmv3fpnQydNN10194De_yW4=w2400)",
     "url(https://lh3.googleusercontent.com/SMEu8tKjhzt5a5MPrt8-NwVnRBQSq0o7R1qt00WFKPBK-Ugz29b-OYseyDbT0DQa05nnOoEd5j8itnb3RA8y8bT8uRv1C1kH-B0hZrjIbNFs8sbL_seW-tIO7DPf-WwoDn7ASNIX5tY=w2400)",
@@ -65,7 +61,9 @@ function randomJumbo(st) {
     "url(https://lh3.googleusercontent.com/6cJeDleGsKVDQnhRr1ItXio81zewRJrAicLcjPdfNyvjlwJVE_ZKHU3IK1niJXmpPBa2DHb6fdwdi4pQa9xiQs8I577F34WqmoEzfBoZ6nlk5BmOsG9tC_VRkRRDQ2jw_DhAG6GrYoc=w2400)",
     "url(https://lh3.googleusercontent.com/yoTFDmL4HU0S-5gEIb9gQ6lavO3PjFkegk2HGrDpmW7_JkSoZXW53Rnecxvp_I88TatwbbMvqYhAOBKkkEgXTatNlG8kdib11pnuZrRS97qWlcMY442ygFmmKZFF_lsym7NSHoO37oI=w2400)",
     "url(https://lh3.googleusercontent.com/HRYX-ye3ksLee84kd5OaGPGm9giQbVw83EkTgbvSMYh10ikVtVR9kwPU6XGUqsmckpPQYg7C8dDkwvpi7erEZFpa4MwNjOqPpqW3bN7ZcIsF-rlAFK152Vavz2vSGN2yO3kC1xqtmNU=w2400)",
-    "url(https://lh3.googleusercontent.com/urQlw2oVrKwRCnnEDhjnig2GJGCk9JO_0LJrIfiaS3yck3RxuXOWkwXWxcta9ZdATOTFuj9wUATujFz61f86pNo1a9G8L0H3-zowMO9ao6jE813HfMFyWCSaHxIWW-5NwD7hueiZynM=w2400)"
+    "url(https://lh3.googleusercontent.com/vfwuwFZNcuMpTaRfIM697kXNi8JvhgOFHh8rosmL_t98Sw6_2Kr8giGnWmeOhtBv7ynxLp5xie66qQOpjBAtNQ_xMOlTR5d0kQdE-j8z6eCL8ml0389C-T0E5zEoF_BHNi3BUDWGltU=w2400)",
+    "url(https://lh3.googleusercontent.com/Zq26gFbC90UG6RJCEiDzn_FzOswc_xJgFrU51Ppbq4gDctcZNUHNdh3-N7ifmIvpcc5FRN8y56M4t5BfN7NQ5JLuCTSASfOAe5lxulHkfamPR1y-RI1LJ6VtiYeSgDx9OGls6_j6OLc=w2400)",
+    "url(https://lh3.googleusercontent.com/yLqGO-gxRDOv5eMHZC8SPCvz4wUmk6Ktrok6lup90p_PLkbTnoO5Ly3sXClvIomZw9Pe0DN9qlvmbmzLyd56GGW-15stVMaIEAx4kX3wKPmBVXyiY9HjqYUAJU5R8YFwK4hfUlRgP8U=w2400)"
   ];
   let randomPic = Math.floor(Math.random() * jumboPics.length);
   document.querySelector(".jumbotron").style.background = jumboPics[randomPic];
