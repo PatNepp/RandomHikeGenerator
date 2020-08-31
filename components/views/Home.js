@@ -76,9 +76,9 @@ export default () => `
       </div>
       <p class="optional">------optional------</p>
       <div id="hikeLength">
-        <label for="length">Length:</label>
+        <label for="length">Minimum Length:</label>
         <select id="length" name="length">
-          <option class="minHike" value="0">Minimum Hike Length</option>
+          <option class="minHike" value="0">No Preference</option>
           <option class="minHike" value="1">1 mile</option>
           <option class="minHike" value="5">5 miles</option>
           <option class="minHike" value="10">10 miles</option>
@@ -96,7 +96,7 @@ export default () => `
         </select>
       </div>
     </div>
-    <button type="submit" id="randomButton" href="" data-navigo>Find a Hike! <i class="fas fa-hiking"></i></button>
+    <button type="submit" id="randomButton" href="">Find a Hike! <i class="fas fa-hiking"></i></button>
   </form>
 </main>
 `;

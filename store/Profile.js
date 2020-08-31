@@ -1,4 +1,5 @@
 export default {
   header: "Profile Page",
-  page: "Profile"
+  page: "Profile",
+  info: []
 };

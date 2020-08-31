@@ -1,4 +1,8 @@
 export default {
   header: "Login",
-  page: "Login"
+  page: "Login",
+  logInInfo: {
+    email: "",
+    password: ""
+  }
 };
