@@ -25,12 +25,15 @@ function render(st = state.Home) {
   ${Main(st)}
   ${Footer(st)}
   `;
+
+  router.updatePageLinks();
+
   hideHeaderElements(st);
   randomJumbo(st);
-  //findAHikeSubmit(st);
-  router.updatePageLinks();
-  // signUpUser();
-  // logInUser();
+
+  listenForRegister(st);
+  listenForLoginForm(st);
+  loginLogoutListener(st);
 }
 
 //RANDOM JUMBOTRON//
@@ -104,7 +107,6 @@ function findAHikeSubmit() {
   });
   //}
 }
-
 //API call to get lat and long for hiking api call
 function findLatLng(cityState, object) {
   console.log(cityState);
@@ -124,7 +126,6 @@ function findLatLng(cityState, object) {
       );
     });
 }
-
 //API call to get an array of trails based on lat/long, radius, and hike length
 //Using trailLists.filter for difficulty
 function findTrails(lat, lng, object) {
@@ -164,7 +165,6 @@ function findTrails(lat, lng, object) {
       );
     });
 }
-
 //returning the random hike!!!
 function randomTrail(diffArr) {
   let finalTrail = Math.floor(Math.random() * diffArr.length);
@@ -172,7 +172,220 @@ function randomTrail(diffArr) {
   console.log(randArr);
   state.Hike.randArr = randArr;
   render(state.Hike);
+  //router.navigate("/Hike");
 }
+
+function listenForRegister(st) {
+  if (st.page === "Signup") {
+    document.querySelector("#signUpForm").addEventListener("submit", event => {
+      event.preventDefault();
+      //convert html elements to Array
+      let inputList = Array.from(event.target.elements);
+      console.log(inputList);
+      //remove submit and clear buttons from array
+      inputList.pop();
+      inputList.pop();
+      console.log(inputList);
+      const inputs = inputList.map(input => input.value);
+      let fName = inputs[0];
+      let lName = inputs[1];
+      let email = inputs[2];
+      let password = inputs[3];
+
+      console.log(inputs);
+
+      //add user to database
+      auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          //add user to state and database
+          addUserToStateAndDb(fName, lName, email, password);
+          console.log(addUserToStateAndDb);
+          render(state.Profile);
+          router.navigate("/Profile");
+          console.log(state.Profile);
+          populateProfilePage();
+        })
+        .catch(err => {
+          alert("Oops, something went wrong. Please try again!");
+        });
+    });
+  }
+}
+
+//listen for user login
+function listenForLoginForm(st) {
+  if (st.page === "Login") {
+    document.querySelector("#logInForm").addEventListener("submit", event => {
+      event.preventDefault();
+
+      //convert html elements to Array
+      let inputList = Array.from(event.target.elements);
+      //remove the button links so they aren't included
+      inputList.pop();
+      inputList.pop();
+
+      console.log(inputList);
+
+      const inputs = inputList.map(input => input.value);
+      let email = inputs[0];
+      let password = inputs[1];
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          console.log("user logged in");
+        })
+        .then(() => {
+          getUserFromDb(email)
+            .then(() => {
+              render(state.Profile), router.navigate("/Profile");
+            })
+            .then(() => {
+              populateProfilePage();
+            });
+        })
+        .catch(err => {
+          alert(err);
+        });
+    });
+  }
+}
+
+function loginLogoutListener(st) {
+  if (st.page === "Profile") {
+    document.querySelector("#logButton").addEventListener("click", event => {
+      event.preventDefault();
+      //Test if user is logged-in
+      if (st.loggedIn) {
+        //log-out fxn//
+        auth.signOut().then(() => {
+          console.log("user logged out");
+          logOutUserInDb(st.email);
+          resetUserInState();
+          //update user in db
+          db.collection("users").get;
+        });
+        console.log(state.Profile);
+        render(state.Home);
+        router.navigate("/Home");
+      } else {
+        console.log(state.Profile);
+        render(state.Home);
+        router.navigate("/Home");
+      }
+    });
+  }
+}
+
+//*** Add user to state and database ***
+function addUserToStateAndDb(fName, lName, email, password) {
+  // add user to state
+  state.Profile.fName = fName;
+  state.Profile.lName = lName;
+  state.Profile.email = email;
+  state.Profile.password = password;
+  state.Profile.signedIn = true;
+  state.Profile.loggedIn = true;
+
+  // add user to database
+  db.collection("users").add({
+    firstname: firstname,
+    lastname: lastname,
+    username: username,
+    useremail: email,
+    password: password,
+    signedIn: true,
+    loggedIn: true
+  });
+}
+
+//*** Populate the profile page with user info ***
+function populateProfilePage(st) {
+  if (st.page === "Profile") {
+    document.querySelector(
+      "#user-name"
+    ).innerText = `${state.Profile.firstname} ${state.Profile.lastname}`;
+    document.querySelector(
+      "#user-name"
+    ).innerText = `${state.Profile.username}`;
+    document.querySelector(
+      "#user-email"
+    ).innerText = `${state.Profile.useremail}`;
+  }
+}
+
+//*** Get user form the Database ***
+function getUserFromDb(email) {
+  return db
+    .collection("users")
+    .get()
+    .then(snapshot =>
+      snapshot.docs.forEach(doc => {
+        console.log(doc.data);
+        if (email === doc.data().email) {
+          let id = doc.id;
+          db.collection("users")
+            .doc(id)
+            .update({ signedIn: true });
+          console.log("user signed in db");
+
+          let user = doc.data();
+          // update state with user info
+          state.Profile.firstname = user.firstname;
+          state.Profile.lastname = user.lastname;
+          state.Profile.username = user.username;
+          state.Profile.useremail = user.useremail;
+          state.Profile.signedIn = true;
+          state.Profile.loggedIn = true;
+        }
+      })
+    )
+    .catch(err => {
+      // What to do when the request fails
+      alert(err);
+      console.log("Get user from DB request failed!");
+      console.log("Error", err);
+    });
+}
+
+//*** log-out the user in the Database ***
+function logOutUserInDb(email) {
+  if (state.Profile.loggedIn) {
+    db.collection("users")
+      .get()
+      .then(snapshot =>
+        snapshot.docs.forEach(doc => {
+          if (email === doc.data().email) {
+            let id = doc.id;
+            db.collection("users")
+              .doc(id)
+              .update({ signedIn: false });
+          }
+        })
+      );
+    console.log("user signed out in db");
+  }
+}
+
+//*** Reset user in state ***
+function resetUserInState() {
+  state.Profile.firstname = "";
+  state.Profile.lastname = "";
+  state.Profile.username = "";
+  state.Profile.useremail = "";
+  state.Profile.password = "";
+  state.Profile.signedIn = false;
+  state.Profile.loggedIn = false;
+}
+
+// function differentHike() {
+//   let newButton = document.querySelector(".findNewOne");
+//   newButton.addEventListener("click", event => {
+//     event.preventDefault();
+//     render(state.Home);
+//     router.navigate("/Home");
+//   });
+// }
 
 // const signUpBttn = document.getElementById("signUpButton");
 // signUpUser();
@@ -189,19 +402,25 @@ function randomTrail(diffArr) {
 //       email,
 //       password
 //     };
+//     auth.createUserWithEmailAndPassword(email, password).then(response => {
+//               console.log("User Signed Up!");
+//               console.log(response);
+//               console.log(response.user);
+//               addUserToStateAndDb(name, email, password);
+//               render(state.Home);
 //     console.log(signUpInfo);
 //     saveSignUpInfo(signUpInfo);
 //   });
 // }
 // function saveSignUpInfo(info) {
-// let logInEmail = info.email;
-// state.Login.logInInfo.email = logInEmail;
-// let logInPassword = info.password;
-// state.Login.logInInfo.password = logInPassword;
-// let profileInfo = info;
-// state.Profile.info = profileInfo;
-// render(state.Profile);
-//}
+//   let logInEmail = info.email;
+//   state.Login.logInInfo.email = logInEmail;
+//   let logInPassword = info.password;
+//   state.Login.logInInfo.password = logInPassword;
+//   let profileInfo = info;
+//   state.Profile.info = profileInfo;
+//   render(state.Profile);
+// }
 // let logInButton = document.getElementById("logInButton");
 // function logInUser(info) {
 //   console.log(info);
@@ -223,7 +442,7 @@ function randomTrail(diffArr) {
 // console.log(signUpBttn);
 
 // function signUpUser() {
-//   if (st.page === "SignUp") {
+//   if (st.page === "Signup") {
 //     signUpBttn.addEventListener("click", event => {
 //       event.preventDefault();
 //       let inputList = Array.from(event.target.element);

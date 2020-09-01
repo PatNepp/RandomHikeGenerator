@@ -1,5 +1,12 @@
 export default {
   header: "Profile Page",
   page: "Profile",
-  info: []
+  fName: "",
+  lName: "",
+  email: "",
+  password: "",
+  signedIn: false,
+  loggedIn: false,
+  attempts: 3,
+  accountLock: false
 };

@@ -1,7 +1,7 @@
 export default () => `
 <main class="jumbotron">
   <div class="logInPage">
-    <form class="logInBox" action="">
+    <form id="signUpForm" method="POST>
       <h2 class="logInName">Sign Up</h2>
       <div class="labels">
         <label for="fName"><b>First Name:</b></label>
