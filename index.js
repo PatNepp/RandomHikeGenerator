@@ -30,10 +30,11 @@ function render(st = state.Home) {
 
   hideHeaderElements(st);
   randomJumbo(st);
+  profileQuote(st);
 
   listenForRegister(st);
   listenForLoginForm(st);
-  loginLogoutListener(st);
+  addLogInAndOutListener(st);
 }
 
 //RANDOM JUMBOTRON//
@@ -149,13 +150,6 @@ function findTrails(lat, lng, object) {
           randomTrail(diffArr);
           console.log(diffArr);
         }
-        // const trailLists = response.data.trails;
-        // console.log(trailLists);
-        // const diffArr = trailLists.filter(
-        //   trails => trails.difficulty === object.difficult
-        // );
-        //console.log(diffArr);
-        //randomTrail(diffArr);
       }
     })
     .catch(err => {
@@ -204,13 +198,34 @@ function listenForRegister(st) {
           render(state.Profile);
           router.navigate("/Profile");
           console.log(state.Profile);
-          populateProfilePage();
+          //populateProfilePage();
         })
         .catch(err => {
           alert("Oops, something went wrong. Please try again!");
         });
     });
   }
+}
+
+//Add user to state and database
+function addUserToStateAndDb(fName, lName, email, password) {
+  // add user to state
+  state.Profile.fName = fName;
+  state.Profile.lName = lName;
+  state.Profile.email = email;
+  state.Profile.password = password;
+  state.Profile.signedIn = true;
+  state.Profile.loggedIn = true;
+
+  // add user to database
+  db.collection("users").add({
+    fName: fName,
+    lName: lName,
+    email: email,
+    password: password,
+    signedIn: true,
+    loggedIn: true
+  });
 }
 
 //listen for user login
@@ -236,13 +251,12 @@ function listenForLoginForm(st) {
           console.log("user logged in");
         })
         .then(() => {
-          getUserFromDb(email)
-            .then(() => {
-              render(state.Profile), router.navigate("/Profile");
-            })
-            .then(() => {
-              populateProfilePage();
-            });
+          getUserFromDb(email).then(() => {
+            render(state.Profile), router.navigate("/Profile");
+          });
+          // .then(() => {
+          //   populateProfilePage();
+          // });
         })
         .catch(err => {
           alert(err);
@@ -251,9 +265,9 @@ function listenForLoginForm(st) {
   }
 }
 
-function loginLogoutListener(st) {
+function addLogInAndOutListener(st) {
   if (st.page === "Profile") {
-    document.querySelector("#logButton").addEventListener("click", event => {
+    document.querySelector("#logOutBttn").addEventListener("click", event => {
       event.preventDefault();
       //Test if user is logged-in
       if (st.loggedIn) {
@@ -277,42 +291,20 @@ function loginLogoutListener(st) {
   }
 }
 
-//*** Add user to state and database ***
-function addUserToStateAndDb(fName, lName, email, password) {
-  // add user to state
-  state.Profile.fName = fName;
-  state.Profile.lName = lName;
-  state.Profile.email = email;
-  state.Profile.password = password;
-  state.Profile.signedIn = true;
-  state.Profile.loggedIn = true;
-
-  // add user to database
-  db.collection("users").add({
-    firstname: firstname,
-    lastname: lastname,
-    username: username,
-    useremail: email,
-    password: password,
-    signedIn: true,
-    loggedIn: true
-  });
-}
-
-//*** Populate the profile page with user info ***
-function populateProfilePage(st) {
-  if (st.page === "Profile") {
-    document.querySelector(
-      "#user-name"
-    ).innerText = `${state.Profile.firstname} ${state.Profile.lastname}`;
-    document.querySelector(
-      "#user-name"
-    ).innerText = `${state.Profile.username}`;
-    document.querySelector(
-      "#user-email"
-    ).innerText = `${state.Profile.useremail}`;
-  }
-}
+// //*** Populate the profile page with user info ***
+// function populateProfilePage(st) {
+//   if (st.page === "Profile") {
+//     document.querySelector(
+//       "#user-name"
+//     ).innerText = `${state.Profilename} ${state.Profile.lastname}`;
+//     document.querySelector(
+//       "#user-name"
+//     ).innerText = `${state.Profile.username}`;
+//     document.querySelector(
+//       "#user-email"
+//     ).innerText = `${state.Profile.useremail}`;
+//   }
+// }
 
 //*** Get user form the Database ***
 function getUserFromDb(email) {
@@ -331,10 +323,9 @@ function getUserFromDb(email) {
 
           let user = doc.data();
           // update state with user info
-          state.Profile.firstname = user.firstname;
-          state.Profile.lastname = user.lastname;
-          state.Profile.username = user.username;
-          state.Profile.useremail = user.useremail;
+          state.Profile.fNname = user.fName;
+          state.Profile.lName = user.lName;
+          state.Profile.email = user.email;
           state.Profile.signedIn = true;
           state.Profile.loggedIn = true;
         }
@@ -369,154 +360,28 @@ function logOutUserInDb(email) {
 
 //*** Reset user in state ***
 function resetUserInState() {
-  state.Profile.firstname = "";
-  state.Profile.lastname = "";
-  state.Profile.username = "";
-  state.Profile.useremail = "";
+  state.Profile.fName = "";
+  state.Profile.lName = "";
+  state.Profile.email = "";
   state.Profile.password = "";
   state.Profile.signedIn = false;
   state.Profile.loggedIn = false;
 }
 
-// function differentHike() {
-//   let newButton = document.querySelector(".findNewOne");
-//   newButton.addEventListener("click", event => {
-//     event.preventDefault();
-//     render(state.Home);
-//     router.navigate("/Home");
-//   });
-// }
-
-// const signUpBttn = document.getElementById("signUpButton");
-// signUpUser();
-// function signUpUser() {
-//   signUpBttn.addEventListener("click", event => {
-//     event.preventDefault();
-//     let fName = document.getElementById("fName").value;
-//     let lName = document.getElementById("lName").value;
-//     let email = document.getElementById("email").value;
-//     let password = document.getElementById("password").value;
-//     const signUpInfo = {
-//       fName,
-//       lName,
-//       email,
-//       password
-//     };
-//     auth.createUserWithEmailAndPassword(email, password).then(response => {
-//               console.log("User Signed Up!");
-//               console.log(response);
-//               console.log(response.user);
-//               addUserToStateAndDb(name, email, password);
-//               render(state.Home);
-//     console.log(signUpInfo);
-//     saveSignUpInfo(signUpInfo);
-//   });
-// }
-// function saveSignUpInfo(info) {
-//   let logInEmail = info.email;
-//   state.Login.logInInfo.email = logInEmail;
-//   let logInPassword = info.password;
-//   state.Login.logInInfo.password = logInPassword;
-//   let profileInfo = info;
-//   state.Profile.info = profileInfo;
-//   render(state.Profile);
-// }
-// let logInButton = document.getElementById("logInButton");
-// function logInUser(info) {
-//   console.log(info);
-//   logInButton.addEventListener("click", event => {
-//     event.preventDefault();
-//     let logInE = document.getElementById("logInEmail").value;
-//     console.log(logInE);
-//     let logInP = document.getElementById("logInPassword").value;
-//     let logInMatch = [logInE, logInP];
-//     //if(logInMatch === info) {}
-//   });
-// }
-
-// function logInUser() {
-//   if
-// }
-
-// const signUpBttn = document.getElementsByClassName("signUpButton");
-// console.log(signUpBttn);
-
-// function signUpUser() {
-//   if (st.page === "Signup") {
-//     signUpBttn.addEventListener("click", event => {
-//       event.preventDefault();
-//       let inputList = Array.from(event.target.element);
-//       inputList.pop();
-//       console.log(inputList);
-//       const inputs = inputList.map(input => input.value);
-//       let name = inputs[0];
-//       //document.getElementById("name").value;
-//       console.log(name);
-//       let email = inputs[1];
-//       //document.getElementById("email").value;
-//       console.log(email);
-//       let password = inputs[2];
-//       //document.getElementById("password").value;
-//       console.log(password);
-
-//       auth.createUserWithEmailAndPassword(email, password).then(response => {
-//         console.log("User Signed Up!");
-//         console.log(response);
-//         console.log(response.user);
-//         addUserToStateAndDb(name, email, password);
-//         render(state.Home);
-//       });
-//     });
-//   }
-// }
-// function addUserToStateAndDb(name, email, password) {
-//   state.User.name = name;
-//   state.User.email = email;
-//   state.User.loggedIn = true;
-
-//   db.collection("users").add({
-//     name: name,
-//     email: email,
-//     password: password,
-//     signedIn: true
-//   });
-// }
-
-// const logInButton = document.getElementsByClassName("logInButton");
-// console.log(logInButton);
-// function logInUser(st) {
-//   if (st.page === "Login") {
-//     logInButton.addEventListener("click", event => {
-//       event.preventDefault();
-//       let email = document.getElementById("logInEmail").value;
-//       console.log(email);
-//       let password = document.getElementById("logInPassword").value;
-//       console.log(password);
-//       auth.signInWithEmailAndPassword(email, password).then(() => {
-//         console.log("user signed in");
-//         getUserFromDb(email).then(() => render(state.Profile));
-//       });
-//     });
-//   }
-// }
-// function getUserFromDb(email) {
-//   return db
-//     .collection("users")
-//     .get()
-//     .then(snapshot =>
-//       snapshot.docs.forEach(doc => {
-//         if (email === doc.data().email) {
-//           let id = doc.id;
-//           db.collection("users")
-//             .doc(id)
-//             .update({ signedIn: true });
-//           console.log("user signed in in db");
-//           let user = doc.data();
-//           state.User.name = user.name;
-//           state.User.email = email;
-//           state.User.loggedIn = true;
-//           console.log(state.Profile);
-//         }
-//       })
-//     );
-// }
+function profileQuote(st) {
+  if (st.page === "Profile") {
+    let inspirQuotes = [
+      "You're awesome!",
+      "Today is a great day to go on a hike!",
+      "A walk in nature walks the soul back home. -Mary Davis",
+      "I go to nature to be soothed and healed, and to have my senses put in order. -John Burroughs",
+      "Between every two pines is a doorway to a new world. -John Muir",
+      "You need special shoes for hiking-and a bit of a special soul as well. -Terry Guillemets",
+      "In every walk with nature, one receives far more than he seeks. - John Muir",
+      "To walk in nature is to witness a thousand miracles. -Mary Davis"
+    ];
+    let randomQuote = Math.random(Math.floor() * inspirQuotes.length);
+    let quote = inspirQuotes[randomQuote];
+    state.Profile.quote = quote;
+  }
+}

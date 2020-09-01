@@ -8,5 +8,6 @@ export default {
   signedIn: false,
   loggedIn: false,
   attempts: 3,
-  accountLock: false
+  accountLock: false,
+  quote: ""
 };
