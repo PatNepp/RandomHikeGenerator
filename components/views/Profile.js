@@ -12,7 +12,7 @@ export default st => `
       <h4>My Hikes:</h4>
     </div>
     <div id="profileButtons">
-      <button id="profileDiffHike href="./Home" data-navigo>Find A Hike</button>
+      <button id="profileDiffHike" href="./Home" data-navigo>Find A Hike</button>
       <button id="logOutBttn">Log Out</button>
     </div>
   </div>

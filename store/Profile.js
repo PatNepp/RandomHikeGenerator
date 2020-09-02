@@ -9,5 +9,5 @@ export default {
   loggedIn: false,
   attempts: 3,
   accountLock: false,
-  quote: []
+  quote: ""
 };

@@ -30,12 +30,12 @@ function render(st = state.Home) {
 
   hideHeaderElements(st);
   randomJumbo(st);
-  if (st.page === "Profile") {
-    profileQuote(st);
-  }
 
   listenForRegister(st);
   listenForLoginForm(st);
+  if (st.page === "Profile") {
+    profileQuote(st);
+  }
   addLogInAndOutListener(st);
   if (st.page === "Home") {
     findAHikeSubmit();
@@ -113,14 +113,12 @@ function findAHikeSubmit() {
 }
 //API call to get lat and long for hiking api call
 function findLatLng(cityState, object) {
-  console.log(cityState);
   axios
     .get(
       `http://www.mapquestapi.com/geocoding/v1/address?key=VoQ7WMYNrr7GhJoT9rIqVnRO7URcIrpi&location=${cityState}`
     )
     .then(response => {
       const longLat = response.data.results[0].locations[0].latLng;
-      console.log(longLat);
       findTrails(longLat.lat, longLat.lng, object);
     })
     .catch(err => {
@@ -133,7 +131,6 @@ function findLatLng(cityState, object) {
 //API call to get an array of trails based on lat/long, radius, and hike length
 //Using trailLists.filter for difficulty
 function findTrails(lat, lng, object) {
-  console.log(object);
   axios
     .get(
       `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=200&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
@@ -141,17 +138,14 @@ function findTrails(lat, lng, object) {
     .then(response => {
       if (response.data.trails.length > 0) {
         const trailLists = response.data.trails;
-        console.log(trailLists);
         if (object.difficult === "none") {
           let diffArr = trailLists;
           randomTrail(diffArr);
-          console.log(diffArr);
         } else {
           let diffArr = trailLists.filter(
             trails => trails.difficulty === object.difficult
           );
           randomTrail(diffArr);
-          console.log(diffArr);
         }
       }
     })
@@ -166,7 +160,6 @@ function findTrails(lat, lng, object) {
 function randomTrail(diffArr) {
   let finalTrail = Math.floor(Math.random() * diffArr.length);
   let randArr = diffArr[finalTrail];
-  console.log(randArr);
   state.Hike.randArr = randArr;
   render(state.Hike);
   //router.navigate("/Hike");
@@ -178,18 +171,14 @@ function listenForRegister(st) {
       event.preventDefault();
       //convert html elements to Array
       let inputList = Array.from(event.target.elements);
-      console.log(inputList);
       //remove submit and clear buttons from array
       inputList.pop();
       inputList.pop();
-      console.log(inputList);
       const inputs = inputList.map(input => input.value);
       let fName = inputs[0];
       let lName = inputs[1];
       let email = inputs[2];
       let password = inputs[3];
-
-      console.log(inputs);
 
       //add user to database
       auth
@@ -197,13 +186,12 @@ function listenForRegister(st) {
         .then(() => {
           //add user to state and database
           addUserToStateAndDb(fName, lName, email, password);
-          console.log(addUserToStateAndDb);
           render(state.Profile);
           router.navigate("/Profile");
-          console.log(state.Profile);
           //populateProfilePage();
         })
         .catch(err => {
+          console.log(err);
           alert("Oops, something went wrong. Please try again!");
         });
     });
@@ -243,8 +231,6 @@ function listenForLoginForm(st) {
       inputList.pop();
       inputList.pop();
 
-      console.log(inputList);
-
       const inputs = inputList.map(input => input.value);
       let email = inputs[0];
       let password = inputs[1];
@@ -276,17 +262,14 @@ function addLogInAndOutListener(st) {
       if (st.loggedIn) {
         //log-out fxn//
         auth.signOut().then(() => {
-          console.log("user logged out");
           logOutUserInDb(st.email);
           resetUserInState();
           //update user in db
           db.collection("users").get;
         });
-        console.log(state.Profile);
         render(state.Home);
         router.navigate("/Home");
       } else {
-        console.log(state.Profile);
         render(state.Home);
         router.navigate("/Home");
       }
@@ -316,13 +299,11 @@ function getUserFromDb(email) {
     .get()
     .then(snapshot =>
       snapshot.docs.forEach(doc => {
-        console.log(doc.data);
         if (email === doc.data().email) {
           let id = doc.id;
           db.collection("users")
             .doc(id)
             .update({ signedIn: true });
-          console.log("user signed in db");
 
           let user = doc.data();
           // update state with user info
@@ -337,8 +318,6 @@ function getUserFromDb(email) {
     .catch(err => {
       // What to do when the request fails
       alert(err);
-      console.log("Get user from DB request failed!");
-      console.log("Error", err);
     });
 }
 
@@ -357,7 +336,6 @@ function logOutUserInDb(email) {
           }
         })
       );
-    console.log("user signed out in db");
   }
 }
 
@@ -371,9 +349,10 @@ function resetUserInState() {
   state.Profile.loggedIn = false;
 }
 
-function profileQuote(st) {
-  if (st.page === "Profile") {
-    let inspirQuotes = [
+function profileQuote() {
+  document.getElementById("logInButton").addEventListener("click", event => {
+    event.preventDefault();
+    const inspirQuotes = [
       "You're awesome!",
       "Today is a great day to go on a hike!",
       "A walk in nature walks the soul back home. -Mary Davis",
@@ -383,8 +362,8 @@ function profileQuote(st) {
       "In every walk with nature, one receives far more than he seeks. - John Muir",
       "To walk in nature is to witness a thousand miracles. -Mary Davis"
     ];
-    let randomQuote = Math.random(Math.floor() * inspirQuotes.length);
+    let randomQuote = Math.floor(Math.random() * inspirQuotes.length);
     let quote = inspirQuotes[randomQuote];
     state.Profile.quote = quote;
-  }
+  });
 }

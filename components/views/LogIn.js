@@ -1,7 +1,7 @@
 export default () => `
 <main class="jumbotron">
   <div class="logInPage">
-    <form id="logInForm" method="POST" action="">
+    <form id="logInForm" method="POST">
       <h2 class="logInName">Log In</h2>
       <div class="labels">
         <label for="email"><b>E-mail:</b></label>
@@ -15,7 +15,7 @@ export default () => `
         </label>
         <br>
         <div class="logInButtons">
-          <button type="submit" id="logInButton">Log In</button>
+          <button type="submit" id="logInButton" href="./Profile" data-navigo>Log In</button>
           <button type="reset" class="clearbtn">Clear</button>
         </div>
       </div>
