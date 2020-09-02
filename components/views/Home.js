@@ -1,6 +1,6 @@
 export default () => `
 <main class="jumbotron">
-  <form class="theButton" action="" method="POST">
+  <form class="theButton">
     <div class="locationFilters">
       <p class="giveLocation">Give us your location and we'll find a random hike for you!</p>
       <div id="citySearch">
@@ -96,7 +96,7 @@ export default () => `
         </select>
       </div>
     </div>
-    <button type="submit" id="randomButton" href="">Find a Hike! <i class="fas fa-hiking"></i></button>
+    <button type="submit" id="randomButton">Find a Hike! <i class="fas fa-hiking"></i></button>
   </form>
 </main>
 `;

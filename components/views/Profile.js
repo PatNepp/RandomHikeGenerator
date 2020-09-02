@@ -1,24 +1,24 @@
 export default st => `
 <main class="jumbotron">
-  <div class="profilePage">
-    <div>
-      <h2>Hello, ${st.fName}!<br>${st.quote}</h2>
+  <div id="profilePageLayout">
+    <div id="helloQuote">
+      <h2>Hello, Patrick!<br>${insertQuote(st.quote)}</h2>
     </div>
-    <div>
+    <div id="profilePic">
       <img src="" alt="Profile Pic">
-      <h5>${st.fName} ${st.lName}</h5>
+      <h5>Patrick Nepp</h5>
     </div>
-    <div>
+    <div id="myHikes">
       <h4>My Hikes:</h4>
     </div>
-    <div>
-      <button href="./Home" data-navigo>Find A Hike</button>
+    <div id="profileButtons">
+      <button id="profileDiffHike href="./Home" data-navigo>Find A Hike</button>
       <button id="logOutBttn">Log Out</button>
     </div>
   </div>
 </main>
 `;
 
-// function profileInformation(info) {
-//   `<h2>Hello, ${state.Profile.fName}</h2>`;
-// }
+function insertQuote(quote) {
+  return `${quote}`;
+}

@@ -30,11 +30,16 @@ function render(st = state.Home) {
 
   hideHeaderElements(st);
   randomJumbo(st);
-  profileQuote(st);
+  if (st.page === "Profile") {
+    profileQuote(st);
+  }
 
   listenForRegister(st);
   listenForLoginForm(st);
   addLogInAndOutListener(st);
+  if (st.page === "Home") {
+    findAHikeSubmit();
+  }
 }
 
 //RANDOM JUMBOTRON//
@@ -85,12 +90,10 @@ function hideHeaderElements(st) {
   }
 }
 
-const findAHikeBttn = document.getElementById("randomButton");
-console.log(findAHikeBttn);
 //pulling data from the form and creating variables for api calls
-findAHikeSubmit();
 function findAHikeSubmit() {
   //if (st.page === "Home") {
+  const findAHikeBttn = document.getElementById("randomButton");
   findAHikeBttn.addEventListener("click", event => {
     event.preventDefault();
     let city = document.getElementById("city").value;
