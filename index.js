@@ -133,7 +133,7 @@ function findLatLng(cityState, object) {
 function findTrails(lat, lng, object) {
   axios
     .get(
-      `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=200&key=200863333-3ebda2f4593009e377ad78efc1fc91be`
+      `http://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=${object.radius}&minLength=${object.length}&maxResults=200&key=200898487-1b6a304c228029d49d7a3d9697b9e196`
     )
     .then(response => {
       if (response.data.trails.length > 0) {
@@ -155,7 +155,7 @@ function findTrails(lat, lng, object) {
         "Oops! No hikes matching your search. Try different filter options. Enjoy your hike!"
       );
     });
-}
+} //200863333-3ebda2f4593009e377ad78efc1fc91be
 //returning the random hike!!!
 function randomTrail(diffArr) {
   let finalTrail = Math.floor(Math.random() * diffArr.length);
