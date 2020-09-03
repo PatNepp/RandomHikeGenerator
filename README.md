@@ -1,25 +1,11 @@
-# Savvy Coders Project Boilerplate Starter Kit
+# Patrick Nepp's Savvy Coders Capstone Project
 
-## Overview
+## Random Hike Generator
 
-This template repository contains several opinionated, 'starter' files and settings to help Savvy Coder students focus more time and energy on learning how to code and/or craft 'business logic' for projects and less time on configurations.
+the Random Hike Generator is a fun, different way to find hikes in your area.
 
-In addition to a '.gitignore' and some VS Code specific extensions and settings, it includes the 'recommended' settings for:
+## Description
 
-1. [ESLint](eslint.org)
-2. [Stylelint](stylelint.io)
-3. [Prettier](prettier.io)
+**Random Hike Generator** returns a single random hike based on the filters a user inputs into the main form. A user will input thier location (city and state) and a radius. These options are required to be filled out. There are two optional options right now. Minimum hiking length and hike difficutly. The function uses two API calls. One Mapquest geocoding API to convert the user's location into latitude and longitude. This data can then be used in the second API call from (hikingproject.com). The user's latitude and longitude, preferred radius, and the hike length are all used in this API call. If the user chooses a difficulty. The returned array of hikes from the API call will be filtered through for the correct difficulty. Then the pseudo-random function takes place to return a random hike.
 
-## Get Started
-
-**First and foremost,** make sure that your local machine is set up with all of the 'dev environment tooling' as per [this guide...](https://www.notion.so/codefinity/Setting-up-a-Local-Dev-Environment-97de62a546f943fbbc7a246b4785a343)
-
-Well, after establishing your directory structure on your local machine, (e.g. '~/Code/SavvyCoders'), kindly [follow these girections](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) - essentially, there should be a button 👆🏾that says **Use this template.**
-
-Once this repo has been created on your GitHub, you can click on the button to 'clone' it as usual. Once it's `clone`d to your local machine, kindly `cd` into the directory and **be sure to do:** `npm i` to get all of the goodies. If you see any _errors_ (warnings are 🙆🏾‍♂️) on Windows, you may have to do `npm install`.
-
-Now, enter `code .` to open this project in VS Code, and look for a prompt to 'install some extensions' once inside VS Code (in the bottom right of your screen). You should install these. 👍🏾
-
-Update this README and make any other initial changes or 🌱 files, etc. Go ahead and do your usual `git` steps, etc. etc. etc.
-
-**Note:** This is a template repository, no need to 'fork it.
+## More to Come...
