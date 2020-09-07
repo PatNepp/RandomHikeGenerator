@@ -21,9 +21,8 @@ function randomHikeInfo(randArr) {
       </div>
       <div id="moreInfo">
         <button class="findNewOne" value="reload page" onClick="document.location.reload(true)" href="./Home" data-navigo>Different Hike</button>
-        <button class="saveMe">Save this Hike</button>
         <h3>For more information, visit <a href=${randArr.url} target="_blank">HikingProject.com</a></h3>
       </div>`;
 }
-
+//<button class="saveMe">Save this Hike</button>
 //value="reload page" onClick="document.location.reload(true)"

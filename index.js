@@ -3,7 +3,7 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
-import { auth, db } from "./firebase";
+//import { auth, db } from "./firebase";
 
 //ROUTER//
 const router = new Navigo(window.location.origin);
@@ -28,15 +28,15 @@ function render(st = state.Home) {
 
   router.updatePageLinks();
 
-  hideHeaderElements(st);
+  //hideHeaderElements(st);
   randomJumbo(st);
 
-  listenForRegister(st);
-  listenForLoginForm(st);
+  //listenForRegister(st);
+  //listenForLoginForm(st);
   if (st.page === "Profile") {
     profileQuote(st);
   }
-  addLogInAndOutListener(st);
+  //addLogInAndOutListener(st);
   if (st.page === "Home") {
     findAHikeSubmit();
   }
@@ -77,18 +77,18 @@ function randomJumbo(st) {
   }
 }
 
-//HIDE HEADER ELEMENTS//
-function hideHeaderElements(st) {
-  if (st.page === "Login") {
-    document.querySelector("#homeLogIn").style.display = "none";
-  }
-  if (st.page === "Signup") {
-    document.querySelector("#homeSignUp").style.display = "none";
-  }
-  if (st.page === "Profile") {
-    document.querySelector(".signLogIn").style.display = "none";
-  }
-}
+// //HIDE HEADER ELEMENTS//
+// function hideHeaderElements(st) {
+//   if (st.page === "Login") {
+//     document.querySelector("#homeLogIn").style.display = "none";
+//   }
+//   if (st.page === "Signup") {
+//     document.querySelector("#homeSignUp").style.display = "none";
+//   }
+//   if (st.page === "Profile") {
+//     document.querySelector(".signLogIn").style.display = "none";
+//   }
+// }
 
 //pulling data from the form and creating variables for api calls
 function findAHikeSubmit() {
@@ -165,205 +165,205 @@ function randomTrail(diffArr) {
   //router.navigate("/Hike");
 }
 
-function listenForRegister(st) {
-  if (st.page === "Signup") {
-    document.querySelector("#signUpForm").addEventListener("submit", event => {
-      event.preventDefault();
-      //convert html elements to Array
-      let inputList = Array.from(event.target.elements);
-      //remove submit and clear buttons from array
-      inputList.pop();
-      inputList.pop();
-      const inputs = inputList.map(input => input.value);
-      let fName = inputs[0];
-      let lName = inputs[1];
-      let email = inputs[2];
-      let password = inputs[3];
+// function listenForRegister(st) {
+//   if (st.page === "Signup") {
+//     document.querySelector("#signUpForm").addEventListener("submit", event => {
+//       event.preventDefault();
+//       //convert html elements to Array
+//       let inputList = Array.from(event.target.elements);
+//       //remove submit and clear buttons from array
+//       inputList.pop();
+//       inputList.pop();
+//       const inputs = inputList.map(input => input.value);
+//       let fName = inputs[0];
+//       let lName = inputs[1];
+//       let email = inputs[2];
+//       let password = inputs[3];
 
-      //add user to database
-      auth
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          //add user to state and database
-          addUserToStateAndDb(fName, lName, email, password);
-          render(state.Profile);
-          router.navigate("/Profile");
-          //populateProfilePage();
-        })
-        .catch(err => {
-          console.log(err);
-          alert("Oops, something went wrong. Please try again!");
-        });
-    });
-  }
-}
-
-//Add user to state and database
-function addUserToStateAndDb(fName, lName, email, password) {
-  // add user to state
-  state.Profile.fName = fName;
-  state.Profile.lName = lName;
-  state.Profile.email = email;
-  state.Profile.password = password;
-  state.Profile.signedIn = true;
-  state.Profile.loggedIn = true;
-
-  // add user to database
-  db.collection("users").add({
-    fName: fName,
-    lName: lName,
-    email: email,
-    password: password,
-    signedIn: true,
-    loggedIn: true
-  });
-}
-
-//listen for user login
-function listenForLoginForm(st) {
-  if (st.page === "Login") {
-    document.querySelector("#logInForm").addEventListener("submit", event => {
-      event.preventDefault();
-
-      //convert html elements to Array
-      let inputList = Array.from(event.target.elements);
-      //remove the button links so they aren't included
-      inputList.pop();
-      inputList.pop();
-
-      const inputs = inputList.map(input => input.value);
-      let email = inputs[0];
-      let password = inputs[1];
-      auth
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          console.log("user logged in");
-        })
-        .then(() => {
-          getUserFromDb(email).then(() => {
-            render(state.Profile), router.navigate("/Profile");
-          });
-          // .then(() => {
-          //   populateProfilePage();
-          // });
-        })
-        .catch(err => {
-          alert(err);
-        });
-    });
-  }
-}
-
-function addLogInAndOutListener(st) {
-  if (st.page === "Profile") {
-    document.querySelector("#logOutBttn").addEventListener("click", event => {
-      event.preventDefault();
-      //Test if user is logged-in
-      if (st.loggedIn) {
-        //log-out fxn//
-        auth.signOut().then(() => {
-          logOutUserInDb(st.email);
-          resetUserInState();
-          //update user in db
-          db.collection("users").get;
-        });
-        render(state.Home);
-        router.navigate("/Home");
-      } else {
-        render(state.Home);
-        router.navigate("/Home");
-      }
-    });
-  }
-}
-
-// //*** Populate the profile page with user info ***
-// function populateProfilePage(st) {
-//   if (st.page === "Profile") {
-//     document.querySelector(
-//       "#user-name"
-//     ).innerText = `${state.Profilename} ${state.Profile.lastname}`;
-//     document.querySelector(
-//       "#user-name"
-//     ).innerText = `${state.Profile.username}`;
-//     document.querySelector(
-//       "#user-email"
-//     ).innerText = `${state.Profile.useremail}`;
+//       //add user to database
+//       auth
+//         .createUserWithEmailAndPassword(email, password)
+//         .then(() => {
+//           //add user to state and database
+//           addUserToStateAndDb(fName, lName, email, password);
+//           render(state.Profile);
+//           router.navigate("/Profile");
+//           //populateProfilePage();
+//         })
+//         .catch(err => {
+//           console.log(err);
+//           alert("Oops, something went wrong. Please try again!");
+//         });
+//     });
 //   }
 // }
 
-//*** Get user form the Database ***
-function getUserFromDb(email) {
-  return db
-    .collection("users")
-    .get()
-    .then(snapshot =>
-      snapshot.docs.forEach(doc => {
-        if (email === doc.data().email) {
-          let id = doc.id;
-          db.collection("users")
-            .doc(id)
-            .update({ signedIn: true });
+// //Add user to state and database
+// function addUserToStateAndDb(fName, lName, email, password) {
+//   // add user to state
+//   state.Profile.fName = fName;
+//   state.Profile.lName = lName;
+//   state.Profile.email = email;
+//   state.Profile.password = password;
+//   state.Profile.signedIn = true;
+//   state.Profile.loggedIn = true;
 
-          let user = doc.data();
-          // update state with user info
-          state.Profile.fNname = user.fName;
-          state.Profile.lName = user.lName;
-          state.Profile.email = user.email;
-          state.Profile.signedIn = true;
-          state.Profile.loggedIn = true;
-        }
-      })
-    )
-    .catch(err => {
-      // What to do when the request fails
-      alert(err);
-    });
-}
+//   // add user to database
+//   db.collection("users").add({
+//     fName: fName,
+//     lName: lName,
+//     email: email,
+//     password: password,
+//     signedIn: true,
+//     loggedIn: true
+//   });
+// }
 
-//*** log-out the user in the Database ***
-function logOutUserInDb(email) {
-  if (state.Profile.loggedIn) {
-    db.collection("users")
-      .get()
-      .then(snapshot =>
-        snapshot.docs.forEach(doc => {
-          if (email === doc.data().email) {
-            let id = doc.id;
-            db.collection("users")
-              .doc(id)
-              .update({ signedIn: false });
-          }
-        })
-      );
-  }
-}
+// //listen for user login
+// function listenForLoginForm(st) {
+//   if (st.page === "Login") {
+//     document.querySelector("#logInForm").addEventListener("submit", event => {
+//       event.preventDefault();
 
-//*** Reset user in state ***
-function resetUserInState() {
-  state.Profile.fName = "";
-  state.Profile.lName = "";
-  state.Profile.email = "";
-  state.Profile.password = "";
-  state.Profile.signedIn = false;
-  state.Profile.loggedIn = false;
-}
+//       //convert html elements to Array
+//       let inputList = Array.from(event.target.elements);
+//       //remove the button links so they aren't included
+//       inputList.pop();
+//       inputList.pop();
 
-function profileQuote() {
-  document.getElementById("logInButton").addEventListener("click", event => {
-    event.preventDefault();
-    const inspirQuotes = [
-      "You're awesome!",
-      "Today is a great day to go on a hike!",
-      "A walk in nature walks the soul back home. -Mary Davis",
-      "I go to nature to be soothed and healed, and to have my senses put in order. -John Burroughs",
-      "Between every two pines is a doorway to a new world. -John Muir",
-      "You need special shoes for hiking-and a bit of a special soul as well. -Terry Guillemets",
-      "In every walk with nature, one receives far more than he seeks. - John Muir",
-      "To walk in nature is to witness a thousand miracles. -Mary Davis"
-    ];
-    let randomQuote = Math.floor(Math.random() * inspirQuotes.length);
-    let quote = inspirQuotes[randomQuote];
-    state.Profile.quote = quote;
-  });
-}
+//       const inputs = inputList.map(input => input.value);
+//       let email = inputs[0];
+//       let password = inputs[1];
+//       auth
+//         .signInWithEmailAndPassword(email, password)
+//         .then(() => {
+//           console.log("user logged in");
+//         })
+//         .then(() => {
+//           getUserFromDb(email).then(() => {
+//             render(state.Profile), router.navigate("/Profile");
+//           });
+//           // .then(() => {
+//           //   populateProfilePage();
+//           // });
+//         })
+//         .catch(err => {
+//           alert(err);
+//         });
+//     });
+//   }
+// }
+
+// function addLogInAndOutListener(st) {
+//   if (st.page === "Profile") {
+//     document.querySelector("#logOutBttn").addEventListener("click", event => {
+//       event.preventDefault();
+//       //Test if user is logged-in
+//       if (st.loggedIn) {
+//         //log-out fxn//
+//         auth.signOut().then(() => {
+//           logOutUserInDb(st.email);
+//           resetUserInState();
+//           //update user in db
+//           db.collection("users").get;
+//         });
+//         render(state.Home);
+//         router.navigate("/Home");
+//       } else {
+//         render(state.Home);
+//         router.navigate("/Home");
+//       }
+//     });
+//   }
+// }
+
+// // //*** Populate the profile page with user info ***
+// // function populateProfilePage(st) {
+// //   if (st.page === "Profile") {
+// //     document.querySelector(
+// //       "#user-name"
+// //     ).innerText = `${state.Profilename} ${state.Profile.lastname}`;
+// //     document.querySelector(
+// //       "#user-name"
+// //     ).innerText = `${state.Profile.username}`;
+// //     document.querySelector(
+// //       "#user-email"
+// //     ).innerText = `${state.Profile.useremail}`;
+// //   }
+// // }
+
+// //*** Get user form the Database ***
+// function getUserFromDb(email) {
+//   return db
+//     .collection("users")
+//     .get()
+//     .then(snapshot =>
+//       snapshot.docs.forEach(doc => {
+//         if (email === doc.data().email) {
+//           let id = doc.id;
+//           db.collection("users")
+//             .doc(id)
+//             .update({ signedIn: true });
+
+//           let user = doc.data();
+//           // update state with user info
+//           state.Profile.fNname = user.fName;
+//           state.Profile.lName = user.lName;
+//           state.Profile.email = user.email;
+//           state.Profile.signedIn = true;
+//           state.Profile.loggedIn = true;
+//         }
+//       })
+//     )
+//     .catch(err => {
+//       // What to do when the request fails
+//       alert(err);
+//     });
+// }
+
+// //*** log-out the user in the Database ***
+// function logOutUserInDb(email) {
+//   if (state.Profile.loggedIn) {
+//     db.collection("users")
+//       .get()
+//       .then(snapshot =>
+//         snapshot.docs.forEach(doc => {
+//           if (email === doc.data().email) {
+//             let id = doc.id;
+//             db.collection("users")
+//               .doc(id)
+//               .update({ signedIn: false });
+//           }
+//         })
+//       );
+//   }
+// }
+
+// //*** Reset user in state ***
+// function resetUserInState() {
+//   state.Profile.fName = "";
+//   state.Profile.lName = "";
+//   state.Profile.email = "";
+//   state.Profile.password = "";
+//   state.Profile.signedIn = false;
+//   state.Profile.loggedIn = false;
+// }
+
+// function profileQuote() {
+//   document.getElementById("logInButton").addEventListener("click", event => {
+//     event.preventDefault();
+//     const inspirQuotes = [
+//       "You're awesome!",
+//       "Today is a great day to go on a hike!",
+//       "A walk in nature walks the soul back home. -Mary Davis",
+//       "I go to nature to be soothed and healed, and to have my senses put in order. -John Burroughs",
+//       "Between every two pines is a doorway to a new world. -John Muir",
+//       "You need special shoes for hiking-and a bit of a special soul as well. -Terry Guillemets",
+//       "In every walk with nature, one receives far more than he seeks. - John Muir",
+//       "To walk in nature is to witness a thousand miracles. -Mary Davis"
+//     ];
+//     let randomQuote = Math.floor(Math.random() * inspirQuotes.length);
+//     let quote = inspirQuotes[randomQuote];
+//     state.Profile.quote = quote;
+//   });
+// }
