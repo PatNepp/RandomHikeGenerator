@@ -22,7 +22,7 @@
     "stylelint-vscode": "^7.0.0-6"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "firebase": "^7.19.0",
     "lodash": "^4.17.20",
     "navigo": "^7.1.2",
